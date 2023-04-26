@@ -1,11 +1,14 @@
 import express from 'express'
 import morgan from 'morgan'
 import Blockchain from '../lib/blockchain'
+import Block from '../lib/block'
 
 const PORT: number = 3333
 
 const app = express()
-app.use(morgan('tiny'))
+
+if (process.argv.includes('--run')) app.use(morgan('tiny'))
+
 app.use(express.json())
 
 const blockchain = new Blockchain()
@@ -33,6 +36,24 @@ app.get('/blocks/:indexOrHash', (req, res, next) => {
   }
 })
 
-app.listen(PORT, () => {
-  console.log(`Blockchain server is runing at: ${PORT}`)
+app.post('/blocks', (req, res, next) => {
+  if (req.body.previousHash === undefined) {
+    return res.sendStatus(422)
+  }
+
+  const block = new Block(req.body as Block)
+  const validation = blockchain.addBlock(block)
+
+  if (validation.success) {
+    return res.status(201).json(block)
+  } else {
+    return res.status(400).json(validation)
+  }
 })
+
+if (process.argv.includes('--run'))
+  app.listen(PORT, () => {
+    console.log(`Blockchain server is runing at: ${PORT}`)
+  })
+
+export { app }

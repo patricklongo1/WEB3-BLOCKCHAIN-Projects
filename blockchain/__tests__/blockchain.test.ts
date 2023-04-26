@@ -1,6 +1,8 @@
-import { describe, test, expect } from '@jest/globals'
+import { jest, describe, test, expect } from '@jest/globals'
 import Blockchain from '../src/lib/blockchain'
 import Block from '../src/lib/block'
+
+jest.mock('../src/lib/block')
 
 describe('Blockchain Tests', () => {
   test('Should has genesis block', () => {
@@ -15,14 +17,26 @@ describe('Blockchain Tests', () => {
 
   test('Should be valid (two blocks)', () => {
     const blockchain = new Blockchain()
-    blockchain.addBlock(new Block(1, blockchain.blocks[0].hash, 'Data'))
+    blockchain.addBlock(
+      new Block({
+        index: 1,
+        previousHash: blockchain.blocks[0].hash,
+        data: 'Data',
+      } as Block),
+    )
     expect(blockchain.isValid().success).toBeTruthy()
   })
 
   test('Should NOT be valid (two blocks)', () => {
     const blockchain = new Blockchain()
-    blockchain.addBlock(new Block(1, blockchain.blocks[0].hash, 'Data'))
-    blockchain.blocks[1].data = 'Foo transfer 10 to Bar'
+    blockchain.addBlock(
+      new Block({
+        index: 1,
+        previousHash: blockchain.blocks[0].hash,
+        data: 'Data',
+      } as Block),
+    )
+    blockchain.blocks[1].index = -1
     expect(blockchain.isValid().success).toBeFalsy()
   })
 
@@ -35,7 +49,13 @@ describe('Blockchain Tests', () => {
   test('Should add a new block', () => {
     const blockchain = new Blockchain()
     const result = blockchain.addBlock(
-      new Block(1, blockchain.blocks[0].hash, 'Data'),
+      new Block(
+        new Block({
+          index: 1,
+          previousHash: blockchain.blocks[0].hash,
+          data: 'Data',
+        } as Block),
+      ),
     )
     expect(result.success).toBeTruthy()
   })
@@ -43,7 +63,11 @@ describe('Blockchain Tests', () => {
   test('Should NOT add a new block', () => {
     const blockchain = new Blockchain()
     const result = blockchain.addBlock(
-      new Block(-1, blockchain.blocks[0].hash, 'Data'),
+      new Block({
+        index: -1,
+        previousHash: blockchain.blocks[0].hash,
+        data: 'Data',
+      } as Block),
     )
     expect(result.success).toBeFalsy()
   })

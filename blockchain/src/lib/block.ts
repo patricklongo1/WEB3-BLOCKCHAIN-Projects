@@ -2,7 +2,7 @@ import CryptoJS from 'crypto-js'
 import Validation from './validation'
 
 /**
- * Block class
+ * Block Class
  */
 export default class Block {
   index: number
@@ -13,16 +13,14 @@ export default class Block {
 
   /**
    * Block constructor
-   * @param index Block index in Blockchain
-   * @param previousHash The previous block hash
-   * @param data The block data
+   * @param block Block data
    */
-  constructor(index: number, previousHash: string, data: string) {
-    this.index = index
-    this.timestamp = Date.now()
-    this.previousHash = previousHash
-    this.data = data
-    this.hash = this.getHash()
+  constructor(block?: Block) {
+    this.index = block?.index || 0
+    this.timestamp = block?.timestamp || Date.now()
+    this.previousHash = block?.previousHash || ''
+    this.data = block?.data || ''
+    this.hash = block?.hash || this.getHash()
   }
 
   getHash(): string {

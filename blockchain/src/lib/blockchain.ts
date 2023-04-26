@@ -6,14 +6,19 @@ import Validation from './validation'
  */
 export default class Blockchain {
   blocks: Block[]
-  nextIndex: number = 0
+  nextIndex: number = 1
 
   /**
    * Creates a new blockchain
    */
   constructor() {
-    this.blocks = [new Block(this.nextIndex, '', 'Genesis block')]
-    this.nextIndex++
+    this.blocks = [
+      new Block(
+        new Block({
+          data: 'Genesis block',
+        } as Block),
+      ),
+    ]
   }
 
   getLastBlock(): Block {
@@ -24,10 +29,7 @@ export default class Blockchain {
     const lastBlock = this.getLastBlock()
     const validation = block.isValid(lastBlock.hash, lastBlock.index)
     if (!validation.success)
-      return new Validation(
-        false,
-        `Invalid block #${lastBlock.index}: ${validation.message}`,
-      )
+      return new Validation(false, `Invalid block: ${validation.message}`)
     this.blocks.push(block)
     this.nextIndex++
     return new Validation()
