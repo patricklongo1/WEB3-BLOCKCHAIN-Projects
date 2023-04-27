@@ -14,6 +14,13 @@ describe('BlockchainServer Tests', () => {
     expect(response.body.isValid.success).toEqual(true)
   })
 
+  test('GET /blocks/next - Should get next block to mine infos', async () => {
+    const response = await request(app).get('/blocks/next')
+
+    expect(response.status).toEqual(200)
+    expect(response.body.index).toEqual(1) // Test blockchain version has a genis block #0
+  })
+
   test('GET /blocks/:index - Should get genesis', async () => {
     const response = await request(app).get('/blocks/0') // Genesis index === 0
 

@@ -1,5 +1,6 @@
 import CryptoJS from 'crypto-js'
 import Validation from './validation'
+import BlockInfo from './interfaces/blockInfo'
 
 /**
  * Block Class
@@ -81,5 +82,13 @@ export default class Block {
       return new Validation(false, 'Hash not valid.')
     }
     return new Validation()
+  }
+
+  static fromBlockInfo(blockInfo: BlockInfo): Block {
+    const block = new Block()
+    block.index = blockInfo.index
+    block.previousHash = blockInfo.previousHash
+    block.data = blockInfo.data
+    return block
   }
 }
