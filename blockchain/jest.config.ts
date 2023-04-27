@@ -31,7 +31,7 @@ export default {
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
     '/node_modules/',
-    '/src/lib/blockInfo.ts',
+    '/src/lib/interfaces/blockInfo.ts',
     '/src/lib/transactionType.ts',
     '/src/lib/transactionSearch.ts',
   ],
