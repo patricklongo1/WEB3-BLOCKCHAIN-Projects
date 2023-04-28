@@ -4,6 +4,7 @@ import express, { Request, Response, NextFunction } from 'express'
 import morgan from 'morgan'
 import Blockchain from '../lib/blockchain'
 import Block from '../lib/block'
+import Transaction from '../lib/transaction'
 dotenv.config()
 
 /* c8 ignore next */
@@ -48,6 +49,20 @@ app.get(
   },
 )
 
+app.get(
+  '/transactions/:hash?',
+  (req: Request, res: Response, next: NextFunction) => {
+    if (req.params.hash) {
+      return res.json(blockchain.getTransaction(req.params.hash))
+    }
+
+    return res.json({
+      next: blockchain.mempool.slice(0, Blockchain.TX_PER_BLOCK),
+      total: blockchain.mempool.length,
+    })
+  },
+)
+
 app.post('/blocks', (req: Request, res: Response, next: NextFunction) => {
   if (req.body.previousHash === undefined) {
     return res.sendStatus(422)
@@ -58,6 +73,21 @@ app.post('/blocks', (req: Request, res: Response, next: NextFunction) => {
 
   if (validation.success) {
     return res.status(201).json(block)
+  } else {
+    return res.status(400).json(validation)
+  }
+})
+
+app.post('/transactions', (req: Request, res: Response, next: NextFunction) => {
+  if (req.body.hash === undefined) {
+    return res.sendStatus(422)
+  }
+
+  const tx = new Transaction(req.body as Transaction)
+  const validation = blockchain.addTransaction(tx)
+
+  if (validation.success) {
+    return res.status(201).json(tx)
   } else {
     return res.status(400).json(validation)
   }

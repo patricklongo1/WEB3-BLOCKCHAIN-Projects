@@ -33,7 +33,7 @@ export default {
     '/node_modules/',
     '/src/lib/interfaces/blockInfo.ts',
     '/src/lib/interfaces/transactionType.ts',
-    '/src/lib/transactionSearch.ts',
+    '/src/lib/interfaces/transactionSearch.ts',
   ],
 
   // Indicates which provider should be used to instrument code for coverage
