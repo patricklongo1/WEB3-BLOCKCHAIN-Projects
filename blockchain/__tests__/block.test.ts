@@ -3,8 +3,10 @@ import Block from '../src/lib/block'
 import BlockInfo from '../src/lib/interfaces/blockInfo'
 import Transaction from '../src/lib/transaction'
 import TransactionType from '../src/lib/interfaces/transactionType'
+import TransactionInput from '../src/lib/transactionInput'
 
 jest.mock('../src/lib/transaction')
+jest.mock('../src/lib/transactionInput')
 
 describe('Block Tests', () => {
   const exampleDifficulty = 0
@@ -17,7 +19,7 @@ describe('Block Tests', () => {
         transactions: [
           new Transaction({
             type: TransactionType.FEE,
-            data: new Date().toString(),
+            txInput: new TransactionInput(),
           } as Transaction),
         ],
       } as Block),
@@ -31,7 +33,7 @@ describe('Block Tests', () => {
         previousHash: genesis.hash,
         transactions: [
           new Transaction({
-            data: new Date().toString(),
+            txInput: new TransactionInput(),
           } as Transaction),
         ],
       } as Block),
@@ -53,12 +55,12 @@ describe('Block Tests', () => {
         transactions: [
           new Transaction({
             type: TransactionType.FEE,
-            data: 'fee 1',
+            txInput: new TransactionInput(),
           } as Transaction),
 
           new Transaction({
             type: TransactionType.FEE,
-            data: 'fee 2',
+            txInput: new TransactionInput(),
           } as Transaction),
         ],
       } as Block),
@@ -80,12 +82,12 @@ describe('Block Tests', () => {
         transactions: [
           new Transaction({
             type: TransactionType.FEE,
-            data: 'fee 1',
+            txInput: new TransactionInput(),
           } as Transaction),
 
           new Transaction({
             type: TransactionType.FEE,
-            data: 'fee 2',
+            txInput: new TransactionInput(),
           } as Transaction),
         ],
       } as Block),
@@ -121,7 +123,7 @@ describe('Block Tests', () => {
       transactions: [
         new Transaction({
           type: TransactionType.FEE,
-          data: new Date().toString(),
+          txInput: new TransactionInput(),
         } as Transaction),
       ],
       difficulty: exampleDifficulty,
@@ -156,7 +158,7 @@ describe('Block Tests', () => {
         previousHash: genesis.hash,
         transactions: [
           new Transaction({
-            data: new Date().toString(),
+            txInput: new TransactionInput(),
           } as Transaction),
         ],
       } as Block),
@@ -178,7 +180,7 @@ describe('Block Tests', () => {
         previousHash: genesis.hash,
         transactions: [
           new Transaction({
-            data: new Date().toString(),
+            txInput: new TransactionInput(),
           } as Transaction),
         ],
       } as Block),
@@ -200,7 +202,7 @@ describe('Block Tests', () => {
         previousHash: genesis.hash,
         transactions: [
           new Transaction({
-            data: new Date().toString(),
+            txInput: new TransactionInput(),
           } as Transaction),
         ],
       } as Block),
@@ -220,7 +222,7 @@ describe('Block Tests', () => {
         previousHash: 'invalid',
         transactions: [
           new Transaction({
-            data: new Date().toString(),
+            txInput: new TransactionInput(),
           } as Transaction),
         ],
       } as Block),
@@ -233,14 +235,17 @@ describe('Block Tests', () => {
     expect(validation.success).toBeFalsy()
   })
 
-  test('Should NOT be valid (invalid empty data)', () => {
+  test('Should NOT be valid (invalid txInput)', () => {
+    const txInput = new TransactionInput()
+    txInput.amount = -1
+
     const block1 = new Block(
       new Block({
         index: 1,
         previousHash: genesis.hash,
         transactions: [
           new Transaction({
-            data: '',
+            txInput,
           } as Transaction),
         ],
       } as Block),
@@ -260,7 +265,7 @@ describe('Block Tests', () => {
         previousHash: genesis.hash,
         transactions: [
           new Transaction({
-            data: new Date().toString(),
+            txInput: new TransactionInput(),
           } as Transaction),
         ],
       } as Block),
