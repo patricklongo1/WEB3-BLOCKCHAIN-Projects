@@ -32,7 +32,7 @@ export default {
   coveragePathIgnorePatterns: [
     '/node_modules/',
     '/src/lib/interfaces/blockInfo.ts',
-    '/src/lib/transactionType.ts',
+    '/src/lib/interfaces/transactionType.ts',
     '/src/lib/transactionSearch.ts',
   ],
 
@@ -133,7 +133,7 @@ export default {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: ['dotenv/config'],
+  setupFiles: ['dotenv/config'],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],

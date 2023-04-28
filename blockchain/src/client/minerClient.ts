@@ -1,12 +1,16 @@
+import dotenv from 'dotenv'
+
 import axios from 'axios'
 import BlockInfo from '../lib/interfaces/blockInfo'
 import Block from '../lib/block'
+dotenv.config()
 
-const BLOCKCHAIN_SERVER_URL = 'http://localhost:3333'
+const BLOCKCHAIN_SERVER_URL = process.env.BLOCKCHAIN_SERVER_URL
 const minerWalletHash = {
-  publicKey: 'minerwalletpublickhash',
   privateKey: 'minerwalletprivatekhash',
+  publicKey: `${process.env.MINER_WALLET}`,
 }
+console.log(`Logged as: ${minerWalletHash.publicKey}`)
 
 let totalMined = 0
 

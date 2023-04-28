@@ -1,6 +1,8 @@
 import Block from './block'
 import Validation from '../validation'
 import BlockInfo from '../interfaces/blockInfo'
+import Transaction from './transaction'
+import TransactionType from '../interfaces/transactionType'
 
 /**
  * Mock Blockchain Class
@@ -20,7 +22,12 @@ export default class Blockchain {
           hash: 'fakehashtoblockchainmock',
           previousHash: '',
           timestamp: Date.now(),
-          data: 'Genesis block',
+          transactions: [
+            new Transaction({
+              type: TransactionType.FEE,
+              data: new Date().toString(),
+            } as Transaction),
+          ],
         } as Block),
       ),
     ]
@@ -52,7 +59,11 @@ export default class Blockchain {
 
   getNextBlock(): BlockInfo {
     return {
-      data: new Date().toString(),
+      transactions: [
+        new Transaction({
+          data: new Date().toString(),
+        } as Transaction),
+      ],
       difficulty: 0,
       previousHash: this.getLastBlock().hash,
       index: 1,
