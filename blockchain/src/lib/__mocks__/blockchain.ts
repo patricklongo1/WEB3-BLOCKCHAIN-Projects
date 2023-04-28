@@ -3,18 +3,25 @@ import Validation from '../validation'
 import BlockInfo from '../interfaces/blockInfo'
 import Transaction from './transaction'
 import TransactionType from '../interfaces/transactionType'
+import TransactionSearch from '../interfaces/transactionSearch'
 
 /**
  * Mock Blockchain Class
  */
 export default class Blockchain {
   blocks: Block[]
+  mempool: Transaction[]
   nextIndex: number = 1
 
   /**
    * Creates a new mock blockchain
    */
   constructor() {
+    this.mempool = [
+      new Transaction({
+        data: 'tx1',
+      } as Transaction),
+    ]
     this.blocks = [
       new Block(
         new Block({
@@ -43,6 +50,23 @@ export default class Blockchain {
     this.blocks.push(block)
     this.nextIndex++
     return new Validation()
+  }
+
+  addTransaction(transaction: Transaction): Validation {
+    const validation = transaction.isValid()
+    if (!validation.success) {
+      return validation
+    }
+
+    this.mempool.push(transaction)
+    return new Validation()
+  }
+
+  getTransaction(hash: string): TransactionSearch {
+    return {
+      mempoolIndex: 0,
+      transaction: { hash },
+    } as TransactionSearch
   }
 
   getBlockByHash(hash: string): Block | undefined {

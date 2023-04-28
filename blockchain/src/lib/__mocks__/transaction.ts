@@ -22,7 +22,7 @@ export default class Transaction {
   }
 
   getHash(): string {
-    return this.hash || 'fakehash'
+    return this.hash || 'mockhash'
   }
 
   /**
