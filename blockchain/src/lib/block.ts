@@ -114,7 +114,7 @@ export default class Block {
     const block = new Block()
     block.index = blockInfo.index
     block.previousHash = blockInfo.previousHash
-    block.transactions = blockInfo.transactions
+    block.transactions = blockInfo.transactions.map((tx) => tx as Transaction)
     return block
   }
 }

@@ -18,6 +18,7 @@ describe('Block Tests', () => {
       new Block({
         transactions: [
           new Transaction({
+            to: 'toWallet',
             type: TransactionType.FEE,
             txInput: new TransactionInput(),
           } as Transaction),
@@ -34,6 +35,7 @@ describe('Block Tests', () => {
         transactions: [
           new Transaction({
             txInput: new TransactionInput(),
+            to: 'toWallet',
           } as Transaction),
         ],
       } as Block),
@@ -56,11 +58,13 @@ describe('Block Tests', () => {
           new Transaction({
             type: TransactionType.FEE,
             txInput: new TransactionInput(),
+            to: 'toWallet',
           } as Transaction),
 
           new Transaction({
             type: TransactionType.FEE,
             txInput: new TransactionInput(),
+            to: 'toWallet',
           } as Transaction),
         ],
       } as Block),
@@ -83,11 +87,13 @@ describe('Block Tests', () => {
           new Transaction({
             type: TransactionType.FEE,
             txInput: new TransactionInput(),
+            to: 'toWallet',
           } as Transaction),
 
           new Transaction({
             type: TransactionType.FEE,
             txInput: new TransactionInput(),
+            to: 'toWallet',
           } as Transaction),
         ],
       } as Block),
@@ -102,14 +108,16 @@ describe('Block Tests', () => {
   })
 
   test('Should NOT be valid (invalid tx)', () => {
+    const tx = new Transaction()
     const block1 = new Block(
       new Block({
         index: 1,
         previousHash: genesis.hash,
-        transactions: [new Transaction()],
+        transactions: [tx],
       } as Block),
     )
     block1.mine(exampleDifficulty, exampleMiner)
+    block1.transactions[0].to = ''
     const validation = block1.isValid(
       genesis.hash,
       genesis.index,
@@ -123,6 +131,7 @@ describe('Block Tests', () => {
       transactions: [
         new Transaction({
           type: TransactionType.FEE,
+          to: 'toWallet',
           txInput: new TransactionInput(),
         } as Transaction),
       ],
@@ -159,6 +168,7 @@ describe('Block Tests', () => {
         transactions: [
           new Transaction({
             txInput: new TransactionInput(),
+            to: 'toWallet',
           } as Transaction),
         ],
       } as Block),
@@ -181,6 +191,7 @@ describe('Block Tests', () => {
         transactions: [
           new Transaction({
             txInput: new TransactionInput(),
+            to: 'toWallet',
           } as Transaction),
         ],
       } as Block),
@@ -203,6 +214,7 @@ describe('Block Tests', () => {
         transactions: [
           new Transaction({
             txInput: new TransactionInput(),
+            to: 'toWallet',
           } as Transaction),
         ],
       } as Block),
@@ -223,6 +235,7 @@ describe('Block Tests', () => {
         transactions: [
           new Transaction({
             txInput: new TransactionInput(),
+            to: 'toWallet',
           } as Transaction),
         ],
       } as Block),
@@ -245,6 +258,7 @@ describe('Block Tests', () => {
         previousHash: genesis.hash,
         transactions: [
           new Transaction({
+            to: 'toWallet',
             txInput,
           } as Transaction),
         ],
@@ -265,6 +279,7 @@ describe('Block Tests', () => {
         previousHash: genesis.hash,
         transactions: [
           new Transaction({
+            to: 'toWallet',
             txInput: new TransactionInput(),
           } as Transaction),
         ],

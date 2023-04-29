@@ -3,11 +3,12 @@ import { describe, test, expect, jest } from '@jest/globals'
 import { app } from '../src/server/blockchainServer'
 import Block from '../src/lib/block'
 import Transaction from '../src/lib/transaction'
-import Blockchain from '../src/lib/blockchain'
+import TransactionInput from '../src/lib/transactionInput'
 
 jest.mock('../src/lib/transaction')
 jest.mock('../src/lib/block')
 jest.mock('../src/lib/blockchain')
+jest.mock('../src/lib/transactionInput')
 
 describe('BlockchainServer Tests', () => {
   // BLOCKCHAIN
@@ -88,7 +89,8 @@ describe('BlockchainServer Tests', () => {
 
   test('POST /transactions - Should add tx', async () => {
     const tx = new Transaction({
-      data: 'tx1',
+      txInput: new TransactionInput(),
+      to: 'toWallet',
     } as Transaction)
 
     const response = await request(app).post('/transactions').send(tx)
@@ -107,14 +109,11 @@ describe('BlockchainServer Tests', () => {
   })
 
   test('POST /transactions - Should NOT add tx (invalid tx)', async () => {
-    const txBody = {
-      type: 1,
-      timestamp: 1,
-      data: '',
-      hash: 'XPTO',
-    }
+    const tx = new Transaction({
+      txInput: new TransactionInput(),
+    } as Transaction)
 
-    const response = await request(app).post('/transactions').send(txBody)
+    const response = await request(app).post('/transactions').send(tx)
     expect(response.status).toEqual(400)
     expect(response.body.success).toBeFalsy()
   })

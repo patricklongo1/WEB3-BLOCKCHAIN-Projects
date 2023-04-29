@@ -2,9 +2,11 @@ import { jest, describe, test, expect } from '@jest/globals'
 import Blockchain from '../src/lib/blockchain'
 import Block from '../src/lib/block'
 import Transaction from '../src/lib/transaction'
+import TransactionInput from '../src/lib/transactionInput'
 
 jest.mock('../src/lib/block')
 jest.mock('../src/lib/transaction')
+jest.mock('../src/lib/transactionInput')
 
 describe('Blockchain Tests', () => {
   test('Should has genesis block', () => {
@@ -25,7 +27,8 @@ describe('Blockchain Tests', () => {
         previousHash: blockchain.blocks[0].hash,
         transactions: [
           new Transaction({
-            data: new Date().toString(),
+            txInput: new TransactionInput(),
+            to: 'toWallet',
           } as Transaction),
         ],
       } as Block),
@@ -36,7 +39,8 @@ describe('Blockchain Tests', () => {
   test('Should NOT be valid (invalid block)', () => {
     const blockchain = new Blockchain()
     const tx = new Transaction({
-      data: new Date().toString(),
+      txInput: new TransactionInput(),
+      to: 'toWallet',
     } as Transaction)
     blockchain.mempool.push(tx)
     blockchain.addBlock(
@@ -54,7 +58,8 @@ describe('Blockchain Tests', () => {
     const blockchain = new Blockchain()
     const validation = blockchain.addTransaction(
       new Transaction({
-        data: new Date().toString(),
+        txInput: new TransactionInput(),
+        to: 'toWallet',
         hash: 'XPTO',
       } as Transaction),
     )
@@ -62,12 +67,16 @@ describe('Blockchain Tests', () => {
     expect(validation.success).toBeTruthy()
   })
 
-  test('Should NOT add transaction (empty data)', () => {
+  test('Should NOT add transaction (invalid txInput)', () => {
     const blockchain = new Blockchain()
+
+    const txInput = new TransactionInput()
+    txInput.amount = -10
     const validation = blockchain.addTransaction(
       new Transaction({
-        data: '',
+        txInput,
         hash: 'XPTO',
+        to: 'toWallet',
       } as Transaction),
     )
 
@@ -77,8 +86,9 @@ describe('Blockchain Tests', () => {
   test('Should NOT add transaction (duplicated in blockchain)', () => {
     const blockchain = new Blockchain()
     const tx = new Transaction({
-      data: 'XPTO',
+      txInput: new TransactionInput(),
       hash: 'fooBar',
+      to: 'toWallet',
     } as Transaction)
 
     blockchain.blocks.push(
@@ -94,7 +104,8 @@ describe('Blockchain Tests', () => {
   test('Should NOT add transaction (duplicated in mempool)', () => {
     const blockchain = new Blockchain()
     const tx = new Transaction({
-      data: 'XPTO',
+      txInput: new TransactionInput(),
+      to: 'toWallet',
       hash: 'fooBar',
     } as Transaction)
 
@@ -113,8 +124,9 @@ describe('Blockchain Tests', () => {
   test('Should get transaction (mempool)', () => {
     const blockchain = new Blockchain()
     const tx = new Transaction({
-      data: new Date().toString(),
+      txInput: new TransactionInput(),
       hash: 'XPTO',
+      to: 'toWallet',
     } as Transaction)
 
     blockchain.blocks.push(new Block({ transactions: [tx] } as Block))
@@ -125,8 +137,9 @@ describe('Blockchain Tests', () => {
   test('Should get transaction (blockchain)', () => {
     const blockchain = new Blockchain()
     const tx = new Transaction({
-      data: new Date().toString(),
+      txInput: new TransactionInput(),
       hash: 'XPTO',
+      to: 'toWallet',
     } as Transaction)
 
     blockchain.mempool.push(tx)
@@ -143,7 +156,8 @@ describe('Blockchain Tests', () => {
   test('Should add a new block', () => {
     const blockchain = new Blockchain()
     const tx = new Transaction({
-      data: new Date().toString(),
+      to: 'toWallet',
+      txInput: new TransactionInput(),
     } as Transaction)
 
     blockchain.mempool.push(tx)
@@ -167,7 +181,8 @@ describe('Blockchain Tests', () => {
         previousHash: blockchain.blocks[0].hash,
         transactions: [
           new Transaction({
-            data: new Date().toString(),
+            to: 'toWallet',
+            txInput: new TransactionInput(),
           } as Transaction),
         ],
       } as Block),
@@ -177,7 +192,7 @@ describe('Blockchain Tests', () => {
 
   test('Should get next block info', () => {
     const blockchain = new Blockchain()
-    blockchain.mempool.push(new Transaction())
+    blockchain.mempool.push(new Transaction({ to: 'toWallet' } as Transaction))
     const nextBlockInfo = blockchain.getNextBlock()
 
     expect(nextBlockInfo ? nextBlockInfo.index : 0).toEqual(1)

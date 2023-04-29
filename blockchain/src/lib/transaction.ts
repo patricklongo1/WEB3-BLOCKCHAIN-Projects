@@ -10,7 +10,7 @@ export default class Transaction {
   type: TransactionType
   timestamp: number
   to: string
-  txInput: TransactionInput
+  txInput: TransactionInput | undefined
   hash: string
 
   /**
@@ -21,13 +21,14 @@ export default class Transaction {
     this.type = tx?.type || TransactionType.REGULAR
     this.timestamp = tx?.timestamp || Date.now()
     this.to = tx?.to || ''
-    this.txInput = new TransactionInput(tx?.txInput) || new TransactionInput()
+    this.txInput = tx?.txInput ? new TransactionInput(tx.txInput) : undefined
     this.hash = tx?.hash || this.getHash()
   }
 
   getHash(): string {
+    const from = this.txInput ? this.txInput.getHash() : ''
     return CryptoJS.SHA256(
-      `${this.type}${this.timestamp}${this.txInput.getHash()}${this.to}`,
+      `${this.type}${this.timestamp}${from}${this.to}`,
     ).toString()
   }
 

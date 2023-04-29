@@ -4,6 +4,7 @@ import BlockInfo from '../interfaces/blockInfo'
 import Transaction from './transaction'
 import TransactionType from '../interfaces/transactionType'
 import TransactionSearch from '../interfaces/transactionSearch'
+import TransactionInput from './transactionInput'
 
 /**
  * Mock Blockchain Class
@@ -19,7 +20,7 @@ export default class Blockchain {
   constructor() {
     this.mempool = [
       new Transaction({
-        data: 'tx1',
+        txInput: new TransactionInput(),
       } as Transaction),
     ]
     this.blocks = [
@@ -32,7 +33,7 @@ export default class Blockchain {
           transactions: [
             new Transaction({
               type: TransactionType.FEE,
-              data: new Date().toString(),
+              txInput: new TransactionInput(),
             } as Transaction),
           ],
         } as Block),
@@ -85,7 +86,7 @@ export default class Blockchain {
     return {
       transactions: [
         new Transaction({
-          data: new Date().toString(),
+          txInput: new TransactionInput(),
         } as Transaction),
       ],
       difficulty: 0,
