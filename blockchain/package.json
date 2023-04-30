@@ -11,7 +11,7 @@
     "test": "jest",
     "blockchain": "tsx watch src/server/blockchainServer.ts --run",
     "miner": "tsx watch src/client/minerClient.ts",
-    "wallet": "tsx watch src/client/walletClient.ts"
+    "wallet": "ts-node src/client/walletClient.ts"
   },
   "keywords": [],
   "author": "",
