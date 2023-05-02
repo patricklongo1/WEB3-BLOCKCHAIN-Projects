@@ -15,6 +15,7 @@ describe('TransactionInput Tests', () => {
     const txInput = new TransactionInput({
       amount: 10,
       fromAddress: alice.publicKey,
+      previousTx: 'testPreviousTx',
     } as TransactionInput)
     txInput.sign(alice.privateKey)
 
@@ -28,30 +29,40 @@ describe('TransactionInput Tests', () => {
 
     const validation = txInput.isValid()
     expect(validation.success).toBeFalsy()
-  })
-
-  test('Should NOT be valid (without signature)', () => {
-    const txInput = new TransactionInput({
-      amount: 10,
-      fromAddress: alice.publicKey,
-    } as TransactionInput)
-
-    const validation = txInput.isValid()
-    expect(validation.success).toBeFalsy()
+    expect(validation.message).toEqual(
+      'Signature and Previous transaction are required',
+    )
   })
 
   test('Should NOT be valid (negative amount)', () => {
     const txInput = new TransactionInput({
       amount: -10,
       fromAddress: alice.publicKey,
+      previousTx: 'testPreviousTx',
     } as TransactionInput)
     txInput.sign(alice.privateKey)
 
     const validation = txInput.isValid()
+
     expect(validation.success).toBeFalsy()
+    expect(validation.message).toEqual('Amount must be greater then 0')
   })
 
   test('Should NOT be valid (invalid signature)', () => {
+    const txInput = new TransactionInput({
+      amount: 10,
+      fromAddress: alice.publicKey,
+      previousTx: 'testPreviousTx',
+    } as TransactionInput)
+    txInput.sign(bob.privateKey)
+
+    const validation = txInput.isValid()
+
+    expect(validation.success).toBeFalsy()
+    expect(validation.message).toEqual('Invalid tx input signature')
+  })
+
+  test('Should NOT be valid (invalid previousTx)', () => {
     const txInput = new TransactionInput({
       amount: 10,
       fromAddress: alice.publicKey,
@@ -59,6 +70,10 @@ describe('TransactionInput Tests', () => {
     txInput.sign(bob.privateKey)
 
     const validation = txInput.isValid()
+
     expect(validation.success).toBeFalsy()
+    expect(validation.message).toEqual(
+      'Signature and Previous transaction are required',
+    )
   })
 })

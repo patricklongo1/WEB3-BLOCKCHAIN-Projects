@@ -1,22 +1,46 @@
 import request from 'supertest'
-import { describe, test, expect, jest } from '@jest/globals'
+import { describe, test, expect, jest, beforeAll } from '@jest/globals'
 import { app } from '../src/server/blockchainServer'
 import Block from '../src/lib/block'
 import Transaction from '../src/lib/transaction'
 import TransactionInput from '../src/lib/transactionInput'
+import TransactionOutput from '../src/lib/transactionOutput'
+import Wallet from '../src/lib/wallet'
 
 jest.mock('../src/lib/transaction')
 jest.mock('../src/lib/block')
 jest.mock('../src/lib/blockchain')
 jest.mock('../src/lib/transactionInput')
+jest.mock('../src/lib/transactionOutput')
 
 describe('BlockchainServer Tests', () => {
+  let alice: Wallet
+
+  beforeAll(() => {
+    alice = new Wallet()
+  })
+
   // BLOCKCHAIN
   test('GET /status - Should return blockchain status', async () => {
     const response = await request(app).get('/status')
 
     expect(response.status).toEqual(200)
     expect(response.body.isValid.success).toEqual(true)
+  })
+
+  // WALLETS
+  test('GET /wallets - Should get infos of a wallet by publickKey', async () => {
+    const response = await request(app).get(`/wallets/${alice.publicKey}`)
+
+    expect(response.status).toEqual(200)
+    expect(response.body.balance).toBeTruthy()
+  })
+
+  test('GET /wallets - Should NOT get infos (invalid publicKey)', async () => {
+    const response = await request(app).get(`/wallets/123`)
+
+    expect(response.status).toEqual(400)
+    expect(response.body.errorMessage).toEqual('Invalid wallet')
   })
 
   // BLOCKS
@@ -89,8 +113,8 @@ describe('BlockchainServer Tests', () => {
 
   test('POST /transactions - Should add tx', async () => {
     const tx = new Transaction({
-      txInput: new TransactionInput(),
-      to: 'toWallet',
+      txInputs: [new TransactionInput()],
+      txOutputs: [new TransactionOutput()],
     } as Transaction)
 
     const response = await request(app).post('/transactions').send(tx)
@@ -110,7 +134,8 @@ describe('BlockchainServer Tests', () => {
 
   test('POST /transactions - Should NOT add tx (invalid tx)', async () => {
     const tx = new Transaction({
-      txInput: new TransactionInput(),
+      timestamp: -1,
+      txInputs: [new TransactionInput()],
     } as Transaction)
 
     const response = await request(app).post('/transactions').send(tx)
