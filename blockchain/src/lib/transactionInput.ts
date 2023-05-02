@@ -10,11 +10,13 @@ const ECPair = ECPairFactory(ecc)
 export default class TransactionInput {
   fromAddress: string
   amount: number
+  previousTx: string
   signature: string
 
   constructor(txInput?: TransactionInput) {
     this.fromAddress = txInput?.fromAddress || ''
     this.amount = txInput?.amount || 0
+    this.previousTx = txInput?.previousTx || ''
     this.signature = txInput?.signature || ''
   }
 
@@ -25,12 +27,17 @@ export default class TransactionInput {
   }
 
   getHash(): string {
-    return CryptoJS.SHA256(`${this.fromAddress}${this.amount}`).toString()
+    return CryptoJS.SHA256(
+      `${this.fromAddress}${this.amount}${this.previousTx}`,
+    ).toString()
   }
 
   isValid(): Validation {
-    if (!this.signature) {
-      return new Validation(false, 'Signature is required')
+    if (!this.signature || !this.previousTx) {
+      return new Validation(
+        false,
+        'Signature and Previous transaction are required',
+      )
     }
 
     if (this.amount < 1) {

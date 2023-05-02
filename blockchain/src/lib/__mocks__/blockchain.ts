@@ -17,28 +17,18 @@ export default class Blockchain {
   /**
    * Creates a new mock blockchain
    */
-  constructor() {
-    this.mempool = [
-      new Transaction({
-        txInput: new TransactionInput(),
-      } as Transaction),
-    ]
-    this.blocks = [
-      new Block(
-        new Block({
-          index: 0,
-          hash: 'fakehashtoblockchainmock',
-          previousHash: '',
-          timestamp: Date.now(),
-          transactions: [
-            new Transaction({
-              type: TransactionType.FEE,
-              txInput: new TransactionInput(),
-            } as Transaction),
-          ],
-        } as Block),
-      ),
-    ]
+  constructor(miner: string) {
+    this.blocks = []
+    this.mempool = [new Transaction()]
+    this.blocks.push(
+      new Block({
+        index: 0,
+        hash: 'fakehashtoblockchainmock',
+        previousHash: '',
+        miner: 'mockminer',
+        timestamp: Date.now(),
+      } as Block),
+    )
   }
 
   getLastBlock(): Block {
@@ -64,13 +54,21 @@ export default class Blockchain {
   }
 
   getTransaction(hash: string): TransactionSearch {
+    if (!hash || hash === '-1') {
+      return { mempoolIndex: -1, blockIndex: -1 } as TransactionSearch
+    }
+
     return {
       mempoolIndex: 0,
-      transaction: { hash },
+      transaction: new Transaction(),
     } as TransactionSearch
   }
 
   getBlockByHash(hash: string): Block | undefined {
+    if (!hash || hash === '-1') {
+      return undefined
+    }
+
     return this.blocks.find((b) => b.hash === hash)
   }
 
@@ -84,14 +82,10 @@ export default class Blockchain {
 
   getNextBlock(): BlockInfo {
     return {
-      transactions: [
-        new Transaction({
-          txInput: new TransactionInput(),
-        } as Transaction),
-      ],
-      difficulty: 0,
+      transactions: this.mempool.slice(0, 2),
+      difficulty: 1,
       previousHash: this.getLastBlock().hash,
-      index: 1,
+      index: this.blocks.length,
       feePerTx: this.getFeePerTx(),
       maxDifficulty: 62,
     } as BlockInfo

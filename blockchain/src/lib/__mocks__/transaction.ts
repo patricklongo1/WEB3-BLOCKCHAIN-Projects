@@ -1,6 +1,7 @@
 import TransactionType from '../interfaces/transactionType'
-import TransactionInput from './transactionInput'
 import Validation from '../validation'
+import TransactionInput from './transactionInput'
+import TransactionOutput from './transactionOutput'
 
 /**
  * Mock Transaction Class
@@ -8,8 +9,8 @@ import Validation from '../validation'
 export default class Transaction {
   type: TransactionType
   timestamp: number
-  to: string
-  txInput: TransactionInput
+  txInputs: TransactionInput[] | undefined
+  txOutputs: TransactionOutput[]
   hash: string
 
   /**
@@ -19,10 +20,8 @@ export default class Transaction {
   constructor(tx?: Transaction) {
     this.type = tx?.type || TransactionType.REGULAR
     this.timestamp = tx?.timestamp || Date.now()
-    this.to = tx?.to || ''
-    this.txInput = tx?.txInput
-      ? new TransactionInput(tx.txInput)
-      : new TransactionInput()
+    this.txOutputs = tx?.txOutputs || [new TransactionOutput()]
+    this.txInputs = tx?.txInputs || [new TransactionInput()]
     this.hash = tx?.hash || this.getHash()
   }
 
@@ -35,18 +34,8 @@ export default class Transaction {
    * @returns True if it is a valid mock tx
    */
   isValid(): Validation {
-    if (!this.to) {
-      return new Validation(false, 'Invalid mock transaction: without TO')
-    }
-
-    const txInputValidation = this.txInput.isValid()
-    if (!txInputValidation.success) {
-      return new Validation(
-        false,
-        `Invalid mock transaction: invalid tx input: ${this.txInput.getHash()}, ${
-          txInputValidation.message
-        }`,
-      )
+    if (this.timestamp < 1 || !this.hash) {
+      return new Validation(false, 'Invalid mock transaction')
     }
 
     return new Validation()

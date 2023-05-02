@@ -4,7 +4,7 @@ import BlockInfo from './interfaces/blockInfo'
 import Transaction from './transaction'
 import TransactionType from './interfaces/transactionType'
 import TransactionSearch from './interfaces/transactionSearch'
-import TransactionInput from './transactionInput'
+import TransactionOutput from './transactionOutput'
 
 /**
  * Blockchain Class
@@ -21,20 +21,36 @@ export default class Blockchain {
   /**
    * Creates a new blockchain
    */
-  constructor() {
+  constructor(miner: string) {
+    this.blocks = []
     this.mempool = []
-    this.blocks = [
-      new Block(
-        new Block({
-          transactions: [
-            new Transaction({
-              type: TransactionType.FEE,
-              txInput: new TransactionInput(),
-            } as Transaction),
-          ],
-        } as Block),
-      ),
-    ]
+
+    const genesis = this.createGenesis(miner)
+    this.blocks.push(genesis)
+    this.nextIndex++
+  }
+
+  createGenesis(miner: string): Block {
+    const amount = 10 // TODO: calcular recompensa
+
+    const tx = new Transaction({
+      type: TransactionType.FEE,
+      txOutputs: [
+        new TransactionOutput({
+          amount,
+          toAddress: miner,
+        } as TransactionOutput),
+      ],
+    } as Transaction)
+    tx.hash = tx.getHash()
+    tx.txOutputs[0].tx = tx.hash
+
+    const block = new Block({
+      transactions: [tx],
+    } as Block)
+
+    block.mine(this.getDifficulty(), miner)
+    return block
   }
 
   getLastBlock(): Block {
@@ -42,7 +58,7 @@ export default class Blockchain {
   }
 
   getDifficulty(): number {
-    return Math.ceil(this.blocks.length / Blockchain.DIFFICULTY_FACTOR)
+    return Math.ceil(this.blocks.length / Blockchain.DIFFICULTY_FACTOR) + 1
   }
 
   getBlockByHash(hash: string): Block | undefined {
@@ -77,6 +93,20 @@ export default class Blockchain {
   }
 
   addTransaction(transaction: Transaction): Validation {
+    if (transaction.txInputs && transaction.txInputs.length) {
+      const from = transaction.txInputs[0].fromAddress
+      const pendingTx = this.mempool
+        .filter((tx) => tx.txInputs && tx.txInputs.length)
+        .map((tx) => tx.txInputs)
+        .flat()
+        .filter((txi) => txi!.fromAddress === from)
+
+      if (pendingTx && pendingTx.length)
+        return new Validation(false, `This wallet has a pending transaction.`)
+
+      // TODO: Validar origem dos fundos
+    }
+
     const validation = transaction.isValid()
     if (!validation.success) {
       return new Validation(false, `Invalid transaction: ${validation.message}`)
@@ -90,20 +120,23 @@ export default class Blockchain {
       return new Validation(false, `Duplicated tx in blockchain`)
     }
 
-    if (this.mempool.some((tx) => tx.hash === transaction.hash)) {
-      return new Validation(false, `Duplicated tx in mempool`)
-    }
-
     this.mempool.push(transaction)
     return new Validation(true, transaction.hash)
   }
 
   addBlock(block: Block): Validation {
-    const lastBlock = this.getLastBlock()
+    const nextBlock = this.getNextBlock()
+    if (!nextBlock) {
+      return new Validation(
+        false,
+        'There is no transactions to add a new block',
+      )
+    }
+
     const validation = block.isValid(
-      lastBlock.hash,
-      lastBlock.index,
-      this.getDifficulty(),
+      nextBlock.previousHash,
+      nextBlock.index - 1,
+      nextBlock.difficulty,
     )
     if (!validation.success) {
       return new Validation(false, `Invalid block: ${validation.message}`)

@@ -70,13 +70,23 @@ export default class Block {
     difficulty: number,
   ): Validation {
     if (this.transactions && this.transactions.length) {
-      if (
-        this.transactions.filter((tx) => tx.type === TransactionType.FEE)
-          .length > 1
-      ) {
+      const feeTxs = this.transactions.filter(
+        (tx) => tx.type === TransactionType.FEE,
+      )
+
+      if (!feeTxs.length) {
+        return new Validation(false, 'No fee tx.')
+      }
+
+      if (feeTxs.length > 1) {
         return new Validation(false, 'Multiples fees transactions')
       }
 
+      if (!feeTxs[0].txOutputs.some((txO) => txO.toAddress === this.miner)) {
+        return new Validation(false, 'Invalid fee tx: Incorrect miner hash')
+      }
+
+      // TODO: validar quantidade de taxas
       const txsValidations = this.transactions.map((tx) => tx.isValid())
       const errors = txsValidations
         .filter((txV) => !txV.success)
@@ -99,7 +109,7 @@ export default class Block {
     if (this.previousHash !== previousHash) {
       return new Validation(false, 'Invalid previousHash.')
     }
-    if (!this.nonce || !this.miner) {
+    if (this.nonce < 1 || !this.miner) {
       return new Validation(false, 'No mined.')
     }
 

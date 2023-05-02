@@ -5,6 +5,7 @@ import readline from 'readline'
 import Transaction from '../lib/transaction'
 import TransactionType from '../lib/interfaces/transactionType'
 import TransactionInput from '../lib/transactionInput'
+import TransactionOutput from '../lib/transactionOutput'
 dotenv.config()
 
 const BLOCKCHAIN_SERVER_URL = process.env.BLOCKCHAIN_SERVER_URL
@@ -27,7 +28,7 @@ function menu() {
     }
 
     rl.question(
-      'Choose youe option: \n1 - Create Wallet\n2 - Recover Wallet\n3 - Balance\n4 - Send Transaction\n\n',
+      'Choose youe option: \n1 - Create Wallet\n2 - Recover Wallet\n3 - Balance\n4 - Send Transaction\n5 - Search Transaction\n\n',
       (answer) => {
         switch (answer) {
           case '1':
@@ -41,6 +42,9 @@ function menu() {
             break
           case '4':
             sendTx()
+            break
+          case '5':
+            searchTx()
             break
 
           default:
@@ -116,39 +120,71 @@ function sendTx() {
 
     rl.question('Amount: ', async (strAmount) => {
       const amount = Number(strAmount)
-      if (amount <= 0) {
+      if (amount < 1) {
         console.log('Invalid amount.')
         return preMenu()
       }
 
-      // TODO: Balance validation
+      const walletResponse = await axios.get(
+        `${BLOCKCHAIN_SERVER_URL}/wallets/${myWalletPub}`,
+      )
+      const balance = walletResponse.data.balance as number
+      const fee = walletResponse.data.fee as number
+      const utxo = walletResponse.data.utxo as TransactionOutput[]
+
+      if (balance < amount + fee) {
+        console.log('Insufficient balance (tx + fee).')
+        return preMenu()
+      }
+
       const tx = new Transaction()
       tx.timestamp = Date.now()
-      tx.to = toWallet
+      tx.txOutputs = [
+        new TransactionOutput({
+          toAddress: toWallet,
+          amount,
+        } as TransactionOutput),
+      ]
       tx.type = TransactionType.REGULAR
-      tx.txInput = new TransactionInput({
-        amount,
-        fromAddress: myWalletPub,
-      } as TransactionInput)
+      tx.txInputs = [
+        new TransactionInput({
+          amount,
+          fromAddress: myWalletPub,
+          previousTx: utxo[0].tx,
+        } as TransactionInput),
+      ]
 
-      tx.txInput.sign(myWalletPriv)
+      tx.txInputs[0].sign(myWalletPriv)
       tx.hash = tx.getHash()
+      tx.txOutputs[0].tx = tx.hash
 
       try {
-        const txResponse = await axios.post(
-          `${BLOCKCHAIN_SERVER_URL}/transactions`,
-          tx,
-        )
+        await axios.post(`${BLOCKCHAIN_SERVER_URL}/transactions`, tx)
         console.log(`Transaction accepted. Waiting the miners!`)
-        console.log(txResponse.data.hash)
       } catch (error: any) {
-        console.error(error.response ? error.response : error.message)
+        console.error(error.response ? error.response.data : error.message)
       }
       return preMenu()
     })
   })
 
   preMenu()
+}
+
+function searchTx() {
+  console.clear()
+
+  rl.question('What is your transaction hash?\n', async (txHash) => {
+    try {
+      const response = await axios.get(
+        `${BLOCKCHAIN_SERVER_URL}/transactions/${txHash}`,
+      )
+      console.log(response.data)
+      return preMenu()
+    } catch (error: any) {
+      console.error(error.response ? error.response.data : error.message)
+    }
+  })
 }
 
 menu()

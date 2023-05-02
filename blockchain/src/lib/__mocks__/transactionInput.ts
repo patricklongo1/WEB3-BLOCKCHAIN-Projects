@@ -6,11 +6,13 @@ import Validation from '../validation'
 export default class TransactionInput {
   fromAddress: string
   amount: number
+  previousTx: string
   signature: string
 
   constructor(txInput?: TransactionInput) {
     this.fromAddress = txInput?.fromAddress || 'mockaddres'
     this.amount = txInput?.amount || 10
+    this.previousTx = txInput?.previousTx || 'mockeprevioustx'
     this.signature = txInput?.signature || 'mocked'
   }
 
@@ -23,8 +25,11 @@ export default class TransactionInput {
   }
 
   isValid(): Validation {
-    if (!this.signature) {
-      return new Validation(false, 'Signature is required')
+    if (!this.signature || !this.previousTx) {
+      return new Validation(
+        false,
+        'Signature and Previous transaction are required',
+      )
     }
 
     if (this.amount < 1) {
