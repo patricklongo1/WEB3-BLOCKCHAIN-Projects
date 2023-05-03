@@ -29,15 +29,31 @@ export default class Transaction {
     return this.hash || 'mockhash'
   }
 
-  /**
-   * Check if mocked transaction is valid
-   * @returns True if it is a valid mock tx
-   */
-  isValid(): Validation {
-    if (this.timestamp < 1 || !this.hash) {
+  getFee(): number {
+    if (this.txInputs && this.txInputs.length) {
+      return 1
+    }
+    return 0
+  }
+
+  isValid(difficulty: number, totalFees: number): Validation {
+    if (this.timestamp < 1 || !this.hash || !difficulty || !totalFees) {
       return new Validation(false, 'Invalid mock transaction')
     }
 
     return new Validation()
+  }
+
+  static fromReward(txO: TransactionOutput): Transaction {
+    const tx = new Transaction({
+      type: TransactionType.FEE,
+      txOutputs: [txO],
+    } as Transaction)
+
+    tx.txInputs = undefined
+    tx.hash = tx.getHash()
+    tx.txOutputs[0].tx = tx.hash
+
+    return tx
   }
 }

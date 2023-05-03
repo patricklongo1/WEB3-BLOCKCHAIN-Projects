@@ -68,6 +68,7 @@ export default class Block {
     previousHash: string,
     previousIndex: number,
     difficulty: number,
+    feePerTx: number,
   ): Validation {
     if (this.transactions && this.transactions.length) {
       const feeTxs = this.transactions.filter(
@@ -86,8 +87,12 @@ export default class Block {
         return new Validation(false, 'Invalid fee tx: Incorrect miner hash')
       }
 
-      // TODO: validar quantidade de taxas
-      const txsValidations = this.transactions.map((tx) => tx.isValid())
+      const totalFees =
+        feePerTx *
+        this.transactions.filter((tx) => tx.type !== TransactionType.FEE).length
+      const txsValidations = this.transactions.map((tx) =>
+        tx.isValid(difficulty, totalFees),
+      )
       const errors = txsValidations
         .filter((txV) => !txV.success)
         .map((txV) => txV.message)
@@ -124,7 +129,7 @@ export default class Block {
     const block = new Block()
     block.index = blockInfo.index
     block.previousHash = blockInfo.previousHash
-    block.transactions = blockInfo.transactions.map((tx) => tx as Transaction)
+    block.transactions = blockInfo.transactions.map((tx) => new Transaction(tx))
     return block
   }
 }

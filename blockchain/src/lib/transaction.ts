@@ -3,6 +3,7 @@ import TransactionType from './interfaces/transactionType'
 import Validation from './validation'
 import TransactionInput from './transactionInput'
 import TransactionOutput from './transactionOutput'
+import Blockchain from './blockchain'
 
 /**
  * Transaction Class
@@ -30,7 +31,6 @@ export default class Transaction {
     this.hash = tx?.hash || this.getHash()
 
     this.txOutputs.forEach((txO) => (txO.tx = this.hash))
-    /* this.txOutputs.forEach((txO, i, arr) => arr[i].tx = this.hash) */
   }
 
   getHash(): string {
@@ -48,10 +48,28 @@ export default class Transaction {
     ).toString()
   }
 
-  /**
-   * Check if tx is valid
-   */
-  isValid(): Validation {
+  getFee(): number {
+    let inputSum: number = 0
+    let outputSum: number = 0
+
+    if (this.txInputs && this.txInputs.length) {
+      inputSum = this.txInputs
+        .map((txI) => txI.amount)
+        .reduce((sum, txiAmount) => sum + txiAmount)
+
+      if (this.txOutputs && this.txOutputs.length) {
+        outputSum = this.txOutputs
+          .map((txO) => txO.amount)
+          .reduce((sum, txoAmount) => sum + txoAmount)
+      }
+
+      return inputSum - outputSum
+    }
+
+    return 0
+  }
+
+  isValid(difficulty: number, totalFees: number): Validation {
     if (this.hash !== this.getHash()) {
       return new Validation(false, 'Invalid hash.')
     }
@@ -91,8 +109,25 @@ export default class Transaction {
       return new Validation(false, `invalid txOutput reference hash.`)
     }
 
-    // TODO: validar taxas e recompensas qnd txType === FEE
+    if (this.type === TransactionType.FEE) {
+      const txO = this.txOutputs[0]
+      if (txO.amount > Blockchain.getRewardAmount(difficulty) + totalFees) {
+        return new Validation(false, `Invalid transaction reward.`)
+      }
+    }
 
     return new Validation()
+  }
+
+  static fromReward(txO: TransactionOutput): Transaction {
+    const tx = new Transaction({
+      type: TransactionType.FEE,
+      txOutputs: [txO],
+    } as Transaction)
+
+    tx.hash = tx.getHash()
+    tx.txOutputs[0].tx = tx.hash
+
+    return tx
   }
 }

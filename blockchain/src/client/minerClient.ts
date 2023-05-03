@@ -5,8 +5,8 @@ import BlockInfo from '../lib/interfaces/blockInfo'
 import Block from '../lib/block'
 import Wallet from '../lib/wallet'
 import Transaction from '../lib/transaction'
-import TransactionType from '../lib/interfaces/transactionType'
 import TransactionOutput from '../lib/transactionOutput'
+import Blockchain from '../lib/blockchain'
 dotenv.config()
 
 const BLOCKCHAIN_SERVER_URL = process.env.BLOCKCHAIN_SERVER_URL
@@ -15,21 +15,36 @@ console.log(`Logged as: ${minerWallet.publicKey}`)
 
 let totalMined = 0
 
-function getRewardTx(): Transaction {
+function getRewardTx(
+  blockInfo: BlockInfo,
+  nextBlock: Block,
+): Transaction | undefined {
+  let amount = 0
+
+  if (blockInfo.difficulty <= blockInfo.maxDifficulty) {
+    amount += Blockchain.getRewardAmount(blockInfo.difficulty)
+  }
+
+  const fees = nextBlock.transactions
+    .map((tx) => tx.getFee())
+    .reduce((sum, fee) => sum + fee)
+  const feeCheck = nextBlock.transactions.length * blockInfo.feePerTx
+  if (fees < feeCheck) {
+    console.log('Low fees. Awaiting next block.')
+    setTimeout(() => {
+      mine()
+    }, 5000)
+
+    return
+  }
+  amount += fees
+
   const txO = new TransactionOutput({
     toAddress: minerWallet.publicKey,
-    amount: 10,
+    amount,
   } as TransactionOutput)
 
-  const tx = new Transaction({
-    txOutputs: [txO],
-    type: TransactionType.FEE,
-  } as Transaction)
-
-  tx.hash = tx.getHash()
-  tx.txOutputs[0].tx = tx.hash
-
-  return tx
+  return Transaction.fromReward(txO)
 }
 
 async function mine() {
@@ -44,7 +59,14 @@ async function mine() {
   const blockInfo = data as BlockInfo
 
   const newBlock = Block.fromBlockInfo(blockInfo)
-  newBlock.transactions.push(getRewardTx())
+  const tx = getRewardTx(blockInfo, newBlock)
+  if (!tx) {
+    console.log('No reward transaction create. Waiting next block')
+    return setTimeout(() => {
+      mine()
+    }, 5000)
+  }
+  newBlock.transactions.push(tx)
 
   newBlock.miner = minerWallet.publicKey
   newBlock.hash = newBlock.getHash()
