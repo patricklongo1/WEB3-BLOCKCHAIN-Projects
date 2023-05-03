@@ -107,18 +107,14 @@ app.get(
       return res.status(400).json({ errorMessage: 'Invalid wallet' })
     }
 
-    // TODO: fazer versao final de UTXO
+    const utxo = blockchain.getUtxo(wallet)
+    const balance = blockchain.getBalance(wallet)
+    const fee = blockchain.getFeePerTx()
 
     return res.json({
-      balance: 10,
-      fee: blockchain.getFeePerTx(),
-      utxo: [
-        new TransactionOutput({
-          amount: 111,
-          toAddress: wallet,
-          tx: blockchain.blocks[0].hash,
-        } as TransactionOutput),
-      ],
+      balance,
+      fee,
+      utxo,
     })
   },
 )

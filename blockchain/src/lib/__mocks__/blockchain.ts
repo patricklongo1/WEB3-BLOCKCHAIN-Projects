@@ -2,9 +2,9 @@ import Block from './block'
 import Validation from '../validation'
 import BlockInfo from '../interfaces/blockInfo'
 import Transaction from './transaction'
-import TransactionType from '../interfaces/transactionType'
 import TransactionSearch from '../interfaces/transactionSearch'
 import TransactionInput from './transactionInput'
+import TransactionOutput from './transactionOutput'
 
 /**
  * Mock Blockchain Class
@@ -83,11 +83,35 @@ export default class Blockchain {
   getNextBlock(): BlockInfo {
     return {
       transactions: this.mempool.slice(0, 2),
-      difficulty: 1,
+      difficulty: 2,
       previousHash: this.getLastBlock().hash,
       index: this.blocks.length,
       feePerTx: this.getFeePerTx(),
       maxDifficulty: 62,
     } as BlockInfo
+  }
+
+  getTxInputs(wallet: string): (TransactionInput | undefined)[] {
+    return [
+      new TransactionInput({
+        fromAddress: wallet,
+      } as TransactionInput),
+    ]
+  }
+
+  getTxOutputs(wallet: string): TransactionOutput[] {
+    return [
+      new TransactionOutput({
+        toAddress: wallet,
+      } as TransactionOutput),
+    ]
+  }
+
+  getUtxo(wallet: string): TransactionOutput[] {
+    return this.getTxOutputs(wallet)
+  }
+
+  getBalance(wallet: string): number {
+    return 10
   }
 }

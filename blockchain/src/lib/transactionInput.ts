@@ -2,6 +2,7 @@ import * as ecc from 'tiny-secp256k1'
 import ECPairFactory from 'ecpair'
 import CryptoJS from 'crypto-js'
 import Validation from './validation'
+import TransactionOutput from './transactionOutput'
 
 const ECPair = ECPairFactory(ecc)
 /**
@@ -52,5 +53,13 @@ export default class TransactionInput {
     return isValid
       ? new Validation()
       : new Validation(false, 'Invalid tx input signature')
+  }
+
+  static fromTxo(txO: TransactionOutput): TransactionInput {
+    return new TransactionInput({
+      amount: txO.amount,
+      fromAddress: txO.toAddress,
+      previousTx: txO.tx,
+    } as TransactionInput)
   }
 }

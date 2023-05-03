@@ -13,7 +13,7 @@ export default class TransactionInput {
     this.fromAddress = txInput?.fromAddress || 'mockaddres'
     this.amount = txInput?.amount || 10
     this.previousTx = txInput?.previousTx || 'mockeprevioustx'
-    this.signature = txInput?.signature || 'mocked'
+    this.signature = txInput?.signature || 'mockedSignature'
   }
 
   sign(privateKey: string): void {

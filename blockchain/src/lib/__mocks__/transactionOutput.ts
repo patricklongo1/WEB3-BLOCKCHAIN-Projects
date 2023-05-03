@@ -14,7 +14,7 @@ export default class TransactionOutput {
    */
   constructor(txOutput?: TransactionOutput) {
     this.toAddress = txOutput?.toAddress || 'mockToAddress'
-    this.amount = txOutput?.amount || 1
+    this.amount = txOutput?.amount || 10
     this.tx = txOutput?.tx || 'XPTO'
   }
 
