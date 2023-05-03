@@ -1,8 +1,8 @@
 import { describe, test, expect, beforeAll } from '@jest/globals'
 import Wallet from '../src/lib/wallet'
 
-describe('Wallet Tests', () => {
-  const exampleWif = '5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ'
+describe('Wallet tests', () => {
+  const exampleWIF = '5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ'
   let alice: Wallet
 
   beforeAll(() => {
@@ -11,29 +11,18 @@ describe('Wallet Tests', () => {
 
   test('Should generate wallet', () => {
     const wallet = new Wallet()
-
     expect(wallet.privateKey).toBeTruthy()
     expect(wallet.publicKey).toBeTruthy()
   })
 
-  test('Should recover a wallet (PK)', () => {
+  test('Should recover wallet (PK)', () => {
     const wallet = new Wallet(alice.privateKey)
-
-    expect(wallet.privateKey).toEqual(alice.privateKey)
-    expect(wallet.publicKey).toBeTruthy()
+    expect(wallet.publicKey).toEqual(alice.publicKey)
   })
 
-  test('Should recover a wallet (WIF)', () => {
-    const wallet = new Wallet(exampleWif)
-
-    expect(wallet.privateKey).toBeTruthy()
+  test('Should recover wallet (WIF)', () => {
+    const wallet = new Wallet(exampleWIF)
     expect(wallet.publicKey).toBeTruthy()
+    expect(wallet.privateKey).toBeTruthy()
   })
-
-  /* test('Should NOT recover a wallet', () => {
-    const wallet = new Wallet('XPTO')
-
-    expect(wallet.privateKey).toBeTruthy()
-    expect(wallet.publicKey).toBeTruthy()
-  }) */
 })
