@@ -3,7 +3,7 @@
 pragma solidity ^0.8.12;
 
 // npm install @openzeppelin/contracts
-import "@openzeppelin/contracts/utils/Strings.sol";
+// import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract EvenOrOdd {
     string public evenOrOdd = ""; // EVEN or ODD
