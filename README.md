@@ -1,4 +1,13 @@
-# WEB3-BLOCKCHAIN-Projects
-Monorepo para projetos de estudo, baseados em techs WEB3 e Blockchain. Incluindo protótipos de blockchain,  miner, wallets, smart-contracts etc...
+![login page](https://hbr.org/resources/images/article_assets/2022/04/01-BI_WEB3_STACKPOLE_HERO-1900x827.jpg)
+## WEB3, BLOCKCHAIN e SMART CONTRACTS
+Monorepo para projetos de estudo, baseados em techs WEB3 e Blockchain. Incluindo: 
+### Protótipo de blockchain com miner e wallet.
+- POO
+- TypeScript
+- Jest
 
-https://bmail.uol.com.br/?xc=b3d50f229b8bd16b03fe761741b6259e#/webmail/0//INBOX/page:1/MjE2MjE
+### smart-contracts
+- Solidity
+- Remix
+- EtherScan
+- Metamask
