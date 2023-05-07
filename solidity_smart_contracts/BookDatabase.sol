@@ -13,8 +13,17 @@ contract BookDatabase {
     }
 
     uint32 private nextId = 0;
-
     mapping(uint32 => Book) public books;
+    address private immutable owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    modifier restricted() {
+        require(owner == msg.sender, "You don't have permissions to do this.");
+        _;
+    }
 
     function compare(string memory str1, string memory str2) private pure returns(bool) {
         bytes memory arrA = bytes(str1);
@@ -22,7 +31,7 @@ contract BookDatabase {
         return arrA.length == arrB.length && keccak256(arrA) == keccak256(arrB);
     }
 
-    function bookExists(uint32 id) public view returns(bool) {
+    function bookExists(uint32 id) private view returns(bool) {
         return bytes(books[id].title).length > 0;
     }
 
@@ -44,7 +53,7 @@ contract BookDatabase {
         }
     }
 
-    function removeBook(uint32 id) public {
+    function removeBook(uint32 id) public restricted {
         require(bookExists(id), "Book not found.");
         delete books[id];
     }
