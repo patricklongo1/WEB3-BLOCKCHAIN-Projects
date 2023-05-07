@@ -16,14 +16,34 @@ contract JoKenPo {
 
     address payable private immutable owner;
 
+    struct Winner {
+        address wallet;
+        uint32 wins;
+    }
+
+    Winner[] public winners;
+
     constructor() {
         owner = payable(msg.sender);
+    }
+
+    function updateWinner(address winner) private {
+        for(uint i=0; i < winners.length; i++) {
+            if (winners[i].wallet == winner) {
+                winners[i].wins++;
+                return;
+            }
+        }
+         winners.push(Winner(winner, 1));
     }
 
     function finishGame(string memory newResult, address winner) private {
         address contractAddress = address(this);
         payable(winner).transfer((contractAddress.balance / 100) * 90);
         owner.transfer(contractAddress.balance);
+
+        updateWinner(winner);
+
         result = newResult;
         player1 = address(0);
         choice1 = Options.NONE;
@@ -61,5 +81,25 @@ contract JoKenPo {
             player1 = address(0);
             choice1 = Options.NONE;
         }
+    }
+
+    function getLeaderBoard() public view returns(Winner[] memory) {
+        if (winners.length < 2) return winners;
+
+        Winner[] memory arr = new Winner[](winners.length);
+        for (uint i=0; i < winners.length; i++) {
+            arr[i] = winners[i];
+        }
+
+        for (uint i=0; i < arr.length - 1; i++) {
+            for(uint j=1; j < arr.length; j++) {
+                if (arr[i].wins < arr[j].wins) {
+                    Winner memory change = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = change;
+                }
+            }
+        }
+        return arr;
     }
 }
