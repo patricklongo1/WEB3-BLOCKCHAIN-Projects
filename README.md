@@ -11,3 +11,5 @@ Monorepo para projetos de estudo, baseados em techs WEB3 e Blockchain. Incluindo
 - Remix
 - EtherScan
 - Metamask
+- Truffle Suite
+- Ganache
