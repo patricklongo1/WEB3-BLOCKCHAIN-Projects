@@ -4,7 +4,7 @@
 
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.19;
 
 contract BookDatabase {
     struct Book {
@@ -13,8 +13,9 @@ contract BookDatabase {
     }
 
     uint32 private nextId = 0;
-    mapping(uint32 => Book) public books;
     address private immutable owner;
+    mapping(uint32 => Book) public books;
+    uint32 public count = 0;
 
     constructor() {
         owner = msg.sender;
@@ -38,6 +39,7 @@ contract BookDatabase {
     function addBook(Book memory newBook) public {
         nextId++;
         books[nextId] = newBook;
+        count++;
     }
 
     function editBook(uint32 id, Book memory updatedBookInfos) public {
@@ -56,5 +58,6 @@ contract BookDatabase {
     function removeBook(uint32 id) public restricted {
         require(bookExists(id), "Book not found.");
         delete books[id];
+        count--;
     }
 }

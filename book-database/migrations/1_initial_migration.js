@@ -1,5 +1,5 @@
-const Migrations = artifacts.require("Migrations");
+const BookDatabase = artifacts.require("BookDatabase");
 
 module.exports = function(deployer) {
-  deployer.deploy(Migrations);
+  deployer.deploy(BookDatabase);
 };
