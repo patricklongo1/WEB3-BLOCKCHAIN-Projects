@@ -9,7 +9,10 @@ Monorepo para projetos de estudo, baseados em techs WEB3 e Blockchain. Incluindo
 ### smart-contracts
 - Solidity
 - Remix
+- Ethereum
 - EtherScan
 - Metamask
 - Truffle Suite
 - Ganache
+- Infura node
+- Mocha
