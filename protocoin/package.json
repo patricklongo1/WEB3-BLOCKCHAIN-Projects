@@ -1,5 +1,10 @@
 {
   "dependencies": {
-    "bn.js": "^5.2.1"
+    "@truffle/hdwallet-provider": "^2.1.10",
+    "bn.js": "^5.2.1",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "truffle-plugin-verify": "^0.6.3"
   }
 }

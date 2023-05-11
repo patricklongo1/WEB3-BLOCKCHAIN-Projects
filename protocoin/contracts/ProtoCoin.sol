@@ -36,7 +36,7 @@ contract ProtoCoin {
 	function approve(address _spender, uint256 _value) public returns(bool success) {
 		_allowances[msg.sender][_spender] = _value;
 
-		emit Transfer(msg.sender, _spender, _value);
+		emit Approval(msg.sender, _spender, _value);
 
 		return true;
 	}
