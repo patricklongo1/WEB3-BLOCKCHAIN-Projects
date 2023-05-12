@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "@openzeppelin/contracts": "^4.8.3",
-    "@truffle/hdwallet-provider": "^2.1.11",
-    "bn.js": "^5.2.1",
+    "@openzeppelin/contracts": "^4.8.0",
+    "@openzeppelin/test-helpers": "^0.5.16",
+    "@truffle/hdwallet-provider": "^2.1.1",
     "dotenv": "^16.0.3"
   },
   "devDependencies": {
-    "truffle-plugin-verify": "^0.6.3"
+    "truffle-plugin-verify": "^0.5.33"
   }
 }
