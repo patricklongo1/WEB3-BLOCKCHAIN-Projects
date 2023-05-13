@@ -4,7 +4,7 @@ import ABI from '../abi.json'
 
 const CONTRACT_ADDRESS = `${process.env.CONTRACT_ADDRESS}`
 
-export async function mint(): Promise<string> {
+export async function connect(): Promise<string[]> {
   if (!window.ethereum) {
     throw new Error('No MetaMask found.')
   }
@@ -16,11 +16,19 @@ export async function mint(): Promise<string> {
     throw new Error('No accounts allowed.')
   }
 
+  return accounts
+}
+
+export async function mint(account: string): Promise<string> {
+  if (!window.ethereum) {
+    throw new Error('No MetaMask found.')
+  }
+
+  const web3 = new Web3(window.ethereum)
   const contract = new web3.eth.Contract(ABI as AbiItem[], CONTRACT_ADDRESS, {
-    from: accounts[0],
+    from: account,
   })
 
   const tx = await contract.methods.mint().send()
-  console.log({ tx })
   return tx.transactionHash
 }
