@@ -15,15 +15,15 @@ contract ProtoCoin is ERC20 {
         _mint(msg.sender, 10000000 * 10**18);
     }
 
-    function mint(address to) public restricted {
+    function mint(/* address to */) public {
         require(_mintAmount > 0, "Minting is not enabled.");
         require(
-            block.timestamp > nextMint[to],
+            block.timestamp > nextMint[/* to */msg.sender],
             "You cannot mint twice in a row."
         );
-        _mint(to, _mintAmount);
+        _mint(/* to */msg.sender, _mintAmount);
 
-        nextMint[to] = block.timestamp + _mintDelay;
+        nextMint[/* to */msg.sender] = block.timestamp + _mintDelay;
     }
 
     function setMintAmount(uint256 newAmount) public restricted {
