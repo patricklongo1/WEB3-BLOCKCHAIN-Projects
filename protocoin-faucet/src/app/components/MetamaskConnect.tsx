@@ -35,7 +35,7 @@ const MetamaskConnect = () => {
     <div className="flex flex-col items-center justify-center w-full">
       {!accounts || !accounts.length || selectedAccount === '' ? (
         <a
-          className="flex items-center justify-center bg-gray-900 text-gray-300 py-2 px-4 rounded hover:bg-gray-900 hover:text-gray-100 transition-colors duration-300 mt-2 cursor-pointer max-w-fit"
+          className="flex items-center justify-center bg-gray-900 text-gray-300 py-2 px-4 rounded hover:bg-gray-900 hover:text-gray-100 transition-colors duration-300 mt-4 cursor-pointer max-w-fit"
           onClick={handleConnectMetamask}
         >
           <Image
@@ -52,7 +52,7 @@ const MetamaskConnect = () => {
             Connected as: {selectedAccount}
           </small>
           <a
-            className="flex items-center justify-center bg-gray-900 text-gray-300 py-2 px-4 rounded hover:bg-gray-900 hover:text-gray-100 transition-colors duration-300 mt-1 cursor-pointer max-w-fit"
+            className="flex items-center justify-center bg-gray-900 text-gray-300 py-2 px-4 rounded hover:bg-gray-900 hover:text-gray-100 transition-colors duration-300 mt-4 cursor-pointer max-w-fit"
             onClick={handleMint}
           >
             <Image

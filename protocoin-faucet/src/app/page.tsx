@@ -14,7 +14,7 @@ export default async function Home() {
         <h2 className="text-2xl text-gray-900 font-bold text-shadow">
           Get your FAUCETS ProtoCoins
         </h2>
-        <p className="text-gray-900">
+        <p className="text-gray-900 mb-6">
           Once a day, earn 0.01 coins for free just connecting your MetaMask
           below.
         </p>
