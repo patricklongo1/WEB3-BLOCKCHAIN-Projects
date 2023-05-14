@@ -2,13 +2,10 @@ import MetamaskConnect from './components/MetamaskConnect'
 import LinkCards from './components/LinkCards'
 
 export default async function Home() {
-  const response = await fetch('http://localhost:3000/api/hello')
-  console.log(response)
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-purple before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-purple-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-purple-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#7159c1] after:dark:opacity-40 before:lg:h-[360px]">
-        <h1 className="text-4xl text-gray-700 font-extrabold text-shadow">
+      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-purple-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-white before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#f2f1f5] after:dark:opacity-40 before:lg:h-[360px]">
+        <h1 className="text-4xl text-gray-900 font-extrabold text-shadow">
           New ProtoCoin - NPC
         </h1>
       </div>
@@ -18,8 +15,8 @@ export default async function Home() {
           Get your FAUCETS ProtoCoins
         </h2>
         <p className="text-gray-900">
-          Once a 2 minutes, earn 0.01 coins for free just connecting your
-          MetaMask below.
+          Once a day, earn 0.01 coins for free just connecting your MetaMask
+          below.
         </p>
         <MetamaskConnect />
       </section>

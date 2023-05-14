@@ -8,6 +8,7 @@ const MetamaskConnect = () => {
   const [status, setStatus] = useState('')
   const [accounts, setAccounts] = useState([''])
   const [selectedAccount, setSelectedAccount] = useState('')
+  const [txHash, setTx] = useState('')
 
   async function handleConnectMetamask() {
     try {
@@ -15,15 +16,16 @@ const MetamaskConnect = () => {
       setAccounts(accountsFromMetamask)
       setSelectedAccount(accountsFromMetamask[0])
     } catch (error: any) {
-      setStatus(error.message)
+      setStatus(error.response ? error.response.data : error.message)
     }
   }
 
   async function handleMint() {
     setStatus('Requesting your tokens. Wait a moment...')
     try {
-      const txHash = await mint(selectedAccount)
-      setStatus(`Your tokens were sent. Tx: ${txHash}`)
+      const resTxHash = await mint(selectedAccount)
+      setStatus(`Your tokens were sent. `)
+      setTx(resTxHash)
     } catch (error: any) {
       setStatus(error.message)
     }
@@ -46,7 +48,7 @@ const MetamaskConnect = () => {
         </a>
       ) : (
         <>
-          <small className="text-1xl text-gray-900 font-extrabold text-shadow mt-2">
+          <small className="text-1xl text-gray-300 font-extrabold text-shadow mt-2">
             Connected as: {selectedAccount}
           </small>
           <a
@@ -64,7 +66,19 @@ const MetamaskConnect = () => {
         </>
       )}
 
-      <p className="text-gray-300 mt-1">{status}</p>
+      <p className="text-gray-300 mt-1">
+        {status}{' '}
+        {txHash !== '' && (
+          <a
+            className="text-blue-400 mt-1 decoratio cursor-pointer underline"
+            href={`https://testnet.bscscan.com/tx/${txHash}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Check TX here
+          </a>
+        )}{' '}
+      </p>
     </div>
   )
 }
