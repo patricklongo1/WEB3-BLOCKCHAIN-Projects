@@ -18,6 +18,7 @@ const nextConfig = {
       })
     }
 
+    config.experiments = { ...config.experiments, topLevelAwait: true }
     return config
   },
   env: {
@@ -27,6 +28,11 @@ const nextConfig = {
     BLOCKCHAIN_NODE_URL: process.env.BLOCKCHAIN_NODE_URL,
     APP_URL: process.env.APP_URL,
     RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
+    MONGO_URI: process.env.MONGO_URI,
+  },
+  experimental: {
+    appDir: true,
+    serverComponentsExternalPackages: ['mongoose'],
   },
 }
 
