@@ -15,7 +15,7 @@ export default async function Home() {
           Get your FAUCETS ProtoCoins
         </h2>
         <p className="text-gray-900 mb-6">
-          Once a day, earn 0.01 coins for free just connecting your MetaMask
+          Once a 24h, earn 0.01 coins for free just connecting your MetaMask
           below.
         </p>
         <MetamaskConnect />

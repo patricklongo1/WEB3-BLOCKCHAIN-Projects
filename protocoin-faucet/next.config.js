@@ -26,6 +26,7 @@ const nextConfig = {
     WALLET_ADDRESS: process.env.WALLET_ADDRESS,
     BLOCKCHAIN_NODE_URL: process.env.BLOCKCHAIN_NODE_URL,
     APP_URL: process.env.APP_URL,
+    RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
   },
 }
 
