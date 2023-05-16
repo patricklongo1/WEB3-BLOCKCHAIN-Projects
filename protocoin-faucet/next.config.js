@@ -5,12 +5,6 @@ const nextConfig = {
       return config
     }
 
-    // Ignore the 'DeprecationWarning' in the server-side build
-    config.node = {
-      ...config.node,
-      buffer: false,
-    }
-
     // ignore the critical dependency warning on the server-side
     if (isServer) {
       // check if ignoreWarnings is defined
