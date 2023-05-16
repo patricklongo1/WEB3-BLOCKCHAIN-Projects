@@ -55,13 +55,11 @@ const MetamaskConnect = () => {
     }
   }
 
-  console.log({ status })
-
   return (
     <div className="flex flex-col items-center justify-center w-full">
       {!accounts || !accounts.length || selectedAccount === '' ? (
         <a
-          className="flex items-center justify-center bg-gray-900 text-gray-300 py-2 px-4 rounded hover:bg-gray-900 hover:text-gray-100 transition-colors duration-300 mt-4 cursor-pointer max-w-fit"
+          className="flex items-center justify-center bg-zinc-900 text-zinc-300 dark:text-zinc-300 py-2 px-4 rounded hover:bg-zinc-900 hover:text-gray-100 transition-colors duration-300 mt-4 cursor-pointer max-w-fit"
           onClick={handleConnectMetamask}
         >
           <Image
@@ -74,13 +72,13 @@ const MetamaskConnect = () => {
         </a>
       ) : (
         <>
-          <small className="text-1xl text-gray-300 font-extrabold text-shadow mt-2">
+          <small className="text-1xl text-zinc-300 dark:text-zinc-50 font-extrabold text-shadow mt-2">
             Connected as: {selectedAccount}
           </small>
 
           {captcha && (
             <a
-              className="flex items-center justify-center bg-gray-900 text-gray-300 py-2 px-4 rounded hover:bg-gray-900 hover:text-gray-100 transition-colors duration-300 mt-4 cursor-pointer max-w-fit"
+              className="flex items-center justify-center bg-zinc-900 text-zinc-300 dark:text-zinc-50 py-2 px-4 rounded hover:bg-zinc-900 hover:text-zinc-100 transition-colors duration-300 mt-4 cursor-pointer max-w-fit"
               onClick={handleMint}
             >
               <Image
