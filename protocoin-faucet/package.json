@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "set NODE_OPTIONS=--trace-deprecation && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "resolutions": {
+    "xhr-request/buffer-to-arraybuffer": "0.0.6"
   },
   "dependencies": {
     "@truffle/hdwallet-provider": "^2.1.11",
@@ -14,6 +17,7 @@
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
+    "buffer-to-arraybuffer": "^0.0.6",
     "encoding": "^0.1.13",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
