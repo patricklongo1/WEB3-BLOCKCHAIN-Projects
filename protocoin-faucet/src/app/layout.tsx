@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -8,11 +9,7 @@ export const metadata = {
   description: 'The future of crypto is here!',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR">
       <body className={inter.className}>{children}</body>
