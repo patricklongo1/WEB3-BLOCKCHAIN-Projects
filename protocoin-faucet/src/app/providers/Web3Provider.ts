@@ -7,7 +7,7 @@ import ABI from '../abi.json'
 const localKeyProvider = new HDWalletProvider({
   privateKeys: [`${process.env.PRIVATE_KEY}`],
   providerOrUrl: `${process.env.BLOCKCHAIN_NODE_URL}`,
-})
+}) as any // Type assertion here
 
 const web3 = new Web3(localKeyProvider)
 
