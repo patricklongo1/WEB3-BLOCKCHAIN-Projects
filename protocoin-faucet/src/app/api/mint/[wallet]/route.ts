@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { mintAndTransfer } from '@/app/providers/Web3Provider'
+import { mintAndTransfer } from '@/app/providers/Ethers3Provider'
 import connectMongo from '../../../services/mongodb'
 import Timeout from '../../../schemas/timeout'
 

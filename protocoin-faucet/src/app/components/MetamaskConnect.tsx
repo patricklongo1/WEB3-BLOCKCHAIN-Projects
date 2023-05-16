@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import ReCAPTCHA from 'react-google-recaptcha'
 
-import { connect, mint } from '../services/Web3Service'
+import { connect, mint } from '../services/Ethers3Service'
 
 const MetamaskConnect = () => {
   const [status, setStatus] = useState({ message: '', type: '' })

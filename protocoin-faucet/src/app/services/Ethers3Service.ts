@@ -1,4 +1,4 @@
-import Web3 from 'web3'
+import { ethers } from 'ethers'
 
 const APP_URL = `${process.env.APP_URL}`
 
@@ -7,8 +7,8 @@ export async function connect(): Promise<string[]> {
     throw new Error('No MetaMask found.')
   }
 
-  const web3 = new Web3(window.ethereum)
-  const accounts = await web3.eth.requestAccounts()
+  const provider = new ethers.providers.Web3Provider(window.ethereum)
+  const accounts = await provider.listAccounts()
 
   if (!accounts || !accounts.length) {
     throw new Error('No accounts allowed.')
