@@ -52,8 +52,13 @@ export async function POST(request: Request, { params }: MintProps) {
   }
 
   try {
-    const tx = await mintAndTransfer(wallet)
-    return NextResponse.json(tx)
+    const environment = `${process.env.ENVIRONMENT}`
+    if (environment === 'DEV') {
+      const tx = await mintAndTransfer(wallet)
+      return NextResponse.json(tx)
+    }
+    mintAndTransfer(wallet)
+    return NextResponse.json('Your tokens were sent.')
   } catch (error: any) {
     return NextResponse.json({ wallet, error }, { status: 500 })
   }

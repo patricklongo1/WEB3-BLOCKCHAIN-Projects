@@ -29,6 +29,7 @@ const nextConfig = {
     APP_URL: process.env.APP_URL,
     RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
     MONGO_URI: process.env.MONGO_URI,
+    ENVIRONMENT: process.env.ENVIRONMENT,
   },
   experimental: {
     appDir: true,
