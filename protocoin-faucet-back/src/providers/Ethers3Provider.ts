@@ -1,5 +1,8 @@
+import dotenv from 'dotenv'
 import { ethers } from 'ethers'
-import ABI from '../abi.json'
+import ABI from './abi.json'
+
+dotenv.config()
 
 const privateKey = `${process.env.PRIVATE_KEY}`
 const nodeUrl = `${process.env.BLOCKCHAIN_NODE_URL}`
