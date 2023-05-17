@@ -57,7 +57,7 @@ export async function POST(request: Request, { params }: MintProps) {
       const tx = await mintAndTransfer(wallet)
       return NextResponse.json(tx)
     }
-    await mintAndTransfer(wallet)
+    mintAndTransfer(wallet)
     return NextResponse.json('Your tokens were sent.')
   } catch (error: any) {
     return NextResponse.json({ wallet, error }, { status: 500 })
