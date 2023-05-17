@@ -72,6 +72,6 @@ app.post('/api/mint/:wallet', async (req: Request, res: Response) => {
     return res.status(500).json({ wallet, error })
   }
 });
-app.listen(port, () => {
+app.listen(port ? Number(port) : 3333, () => {
   console.log(`🚀 Server is up at ${appUrl}:${port}`);
 });
