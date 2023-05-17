@@ -1,20 +1,31 @@
 import dotenv from 'dotenv'
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose'
+import helmet from 'helmet'
+import cors from 'cors'
 
 dotenv.config()
 
 import Timeout from './schemas/timeout'
 import { mintAndTransfer } from './providers/Ethers3Provider'
 
-const app = express();
 const appUrl = `${process.env.APP_URL}`
 const port = `${process.env.PORT}`;
+
+const app = express();
+app.use(helmet());
+app.use(cors());
 
 app.use(express.json());
 
 const connectMongo = async () => mongoose.connect(`${process.env.MONGO_URI}`)
-connectMongo()
+try {
+  connectMongo()
+  console.log('💻 MongoDB is up!')
+} catch (error) {
+  console.log('❌ MongoDB is not up!', error)
+}
+
 
 interface TimeoutDTO {
   _id: string
@@ -36,7 +47,7 @@ app.post('/api/mint/:wallet', async (req: Request, res: Response) => {
 
   if (timeout) {
     if (Date.now() <= Number(timeout.timeout)) {
-      return res.status(500).json(
+      return res.status(400).json(
         { message: "You can't receive tokens twice in 24h." },
       )
     } else {
@@ -62,5 +73,5 @@ app.post('/api/mint/:wallet', async (req: Request, res: Response) => {
   }
 });
 app.listen(port, () => {
-  console.log(`🚀 Servidor rodando em ${appUrl}:${port}`);
+  console.log(`🚀 Server is up at ${appUrl}:${port}`);
 });

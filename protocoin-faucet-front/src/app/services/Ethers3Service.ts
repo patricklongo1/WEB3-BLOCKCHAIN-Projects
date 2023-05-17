@@ -31,5 +31,7 @@ export async function mint(account: string): Promise<string> {
   })
 
   const data = await response.json()
+
+  console.log(data)
   return data
 }
