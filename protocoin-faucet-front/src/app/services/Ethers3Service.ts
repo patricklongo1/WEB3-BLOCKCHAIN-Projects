@@ -7,6 +7,8 @@ export async function connect(): Promise<string[]> {
     throw new Error('No MetaMask found.')
   }
 
+  await window.ethereum.request({ method: 'eth_requestAccounts' })
+
   const provider = new ethers.providers.Web3Provider(window.ethereum)
   const accounts = await provider.listAccounts()
 
