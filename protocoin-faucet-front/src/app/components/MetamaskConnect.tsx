@@ -72,7 +72,7 @@ const MetamaskConnect = () => {
         </a>
       ) : (
         <>
-          <small className="text-1xl text-zinc-300 dark:text-zinc-50 font-extrabold text-shadow mt-2">
+          <small className="text-1xl text-zinc-300 dark:text-zinc-50 font-extrabold text-shadow mt-2 w-full text-center">
             Connected as: {selectedAccount}
           </small>
 
