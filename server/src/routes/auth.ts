@@ -1,4 +1,4 @@
-import 'dotenv/config'
+/* import 'dotenv/config' */
 import { FastifyInstance } from 'fastify'
 import axios from 'axios'
 import { z } from 'zod'
@@ -13,12 +13,8 @@ export async function authRoutes(app: FastifyInstance) {
 
     const { code } = bodySchema.parse(request.body)
 
-    console.log(code)
-    console.log(process.env.GITHUB_CLIENT_ID)
-    console.log(process.env.GITHUB_CLIENT_SECRET)
-
     const accessTokenResponse = await axios.post(
-      'https://github.com/login/oauth/acces_token',
+      'https://github.com/login/oauth/access_token',
       null,
       {
         params: {
@@ -32,7 +28,6 @@ export async function authRoutes(app: FastifyInstance) {
       },
     )
 
-    console.log(accessTokenResponse.data)
     const { access_token } = accessTokenResponse.data
 
     const userResponse = await axios.get('https://api.github.com/user', {

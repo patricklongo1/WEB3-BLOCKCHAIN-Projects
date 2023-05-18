@@ -1,5 +1,4 @@
 import 'dotenv/config'
-
 import fastify from 'fastify'
 import cors from '@fastify/cors'
 import jwt from '@fastify/jwt'
@@ -9,7 +8,9 @@ import { authRoutes } from './routes/auth'
 const app = fastify()
 
 app.register(cors, {
-  origin: true,
+  // Configurações do CORS
+  origin: '*',
+  methods: ['GET', 'PUT', 'DELETE', 'POST'],
 })
 
 app.register(jwt, {
