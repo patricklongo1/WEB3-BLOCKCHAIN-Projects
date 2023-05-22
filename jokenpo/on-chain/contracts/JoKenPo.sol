@@ -16,7 +16,9 @@ contract JoKenPo {
 
     Options private choice1 = Options.NONE;
     address private player1;
-    string public result = "";
+    string private result = "";
+    uint256 private bid = 0.01 ether;
+    uint8 private commission = 10; // percent
 
     address payable private immutable owner;
 
@@ -31,6 +33,38 @@ contract JoKenPo {
         owner = payable(msg.sender);
     }
 
+    function getResult() external view returns (string memory) {
+        return result;
+    }
+
+    function getBid() external view returns (uint256) {
+        return bid;
+    }
+
+    function getCommission() external view returns (uint8) {
+        return commission;
+    }
+
+    function setBid(uint256 newBid) external restricted {
+        require(
+            player1 == address(0),
+            "You cannot change the bid while have a game in progress"
+        );
+        bid = newBid;
+    }
+
+    function setCommission(uint8 newCommission) external restricted {
+        require(
+            player1 == address(0),
+            "You cannot change the commission while have a game in progress"
+        );
+        require(
+            newCommission >= 0 && newCommission <= 100,
+            "The number must be between 0 and 100"
+        );
+        commission = newCommission;
+    }
+
     function updateWinner(address winner) private {
         for (uint i = 0; i < winners.length; i++) {
             if (winners[i].wallet == winner) {
@@ -43,7 +77,9 @@ contract JoKenPo {
 
     function finishGame(string memory newResult, address winner) private {
         address contractAddress = address(this);
-        payable(winner).transfer((contractAddress.balance / 100) * 90);
+        payable(winner).transfer(
+            (contractAddress.balance / 100) * (100 - commission)
+        );
         owner.transfer(contractAddress.balance);
 
         updateWinner(winner);
@@ -53,15 +89,15 @@ contract JoKenPo {
         choice1 = Options.NONE;
     }
 
-    function getBalance() public view returns (uint) {
-        require(owner == msg.sender, "You can't view the contract's balance.");
+    function getBalance() external view restricted returns (uint) {
         return address(this).balance;
     }
 
-    function play(Options newChoice) public payable {
+    function play(Options newChoice) external payable {
+        require(msg.sender != owner, "The owner cannot play");
         require(newChoice != Options.NONE, "Invalid choice");
-        require(player1 != msg.sender, "Wait the another player.");
-        require(msg.value >= 0.01 ether, "Invalid bid.");
+        require(player1 != msg.sender, "Wait the another player");
+        require(msg.value >= bid, "Invalid bid");
 
         if (choice1 == Options.NONE) {
             player1 = msg.sender;
@@ -86,7 +122,7 @@ contract JoKenPo {
         }
     }
 
-    function getLeaderBoard() public view returns (Winner[] memory) {
+    function getLeaderBoard() external view returns (Winner[] memory) {
         if (winners.length < 2) return winners;
 
         Winner[] memory arr = new Winner[](winners.length);
@@ -104,5 +140,10 @@ contract JoKenPo {
             }
         }
         return arr;
+    }
+
+    modifier restricted() {
+        require(owner == msg.sender, "You do not have permission");
+        _;
     }
 }
