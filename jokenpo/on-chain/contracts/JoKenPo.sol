@@ -4,16 +4,11 @@
 
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.19.0;
 
-contract JoKenPo {
-    enum Options {
-        NONE,
-        ROCK,
-        PAPER,
-        SCISSORS
-    } //0, 1, 2, 3
+import { IJoKenPo } from  "./IJoKenPo.sol";
 
+contract JoKenPo is IJoKenPo {
     Options private choice1 = Options.NONE;
     address private player1;
     string private result = "";
@@ -21,11 +16,6 @@ contract JoKenPo {
     uint8 private commission = 10; // percent
 
     address payable private immutable owner;
-
-    struct Winner {
-        address wallet;
-        uint32 wins;
-    }
 
     Winner[] public winners;
 
@@ -48,7 +38,7 @@ contract JoKenPo {
     function setBid(uint256 newBid) external restricted {
         require(
             player1 == address(0),
-            "You cannot change the bid while have a game in progress"
+            "Game in progress"
         );
         bid = newBid;
     }
@@ -56,11 +46,11 @@ contract JoKenPo {
     function setCommission(uint8 newCommission) external restricted {
         require(
             player1 == address(0),
-            "You cannot change the commission while have a game in progress"
+            "Game in progress"
         );
         require(
             newCommission >= 0 && newCommission <= 100,
-            "The number must be between 0 and 100"
+            "Between 0 and 100"
         );
         commission = newCommission;
     }

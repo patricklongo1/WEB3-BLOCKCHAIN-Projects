@@ -1,6 +1,12 @@
 {
+  "scripts": {
+    "lint": "solhint contracts/**/*.sol"
+  },
   "devDependencies": {
     "@truffle/hdwallet-provider": "^2.1.11",
+    "prettier": "^2.8.8",
+    "prettier-plugin-solidity": "^1.1.3",
+    "solhint-plugin-prettier": "^0.0.5",
     "truffle-plugin-verify": "^0.6.3"
   },
   "dependencies": {

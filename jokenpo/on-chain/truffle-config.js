@@ -1,26 +1,26 @@
-const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 
-require('dotenv').config();
+require("dotenv").config();
 module.exports = {
   plugins: ["truffle-plugin-verify"],
   api_keys: {
-    bscscan: process.env.BSCSCAN_API_KEY
+    bscscan: process.env.BSCSCAN_API_KEY,
   },
   networks: {
     bsctest: {
       provider: new HDWalletProvider({
         mnemonic: {
-          phrase: process.env.SECRET
+          phrase: process.env.SECRET,
         },
-        providerOrUrl: process.env.BNB_TESTNET_URL
+        providerOrUrl: process.env.BNB_TESTNET_URL,
       }),
-      network_id: "97"
+      network_id: "97",
     },
     ganache: {
       host: "127.0.0.1",
       port: 7545,
-      network_id: "5777"
-    }
+      network_id: "5777",
+    },
   },
   compilers: {
     solc: {
@@ -28,9 +28,9 @@ module.exports = {
       settings: {
         optimizer: {
           enabled: true, // Default: false
-          runs: 200      // Default: 200
+          runs: 200, // Default: 200
         },
-      }
-    }
-  }
+      },
+    },
+  },
 };
