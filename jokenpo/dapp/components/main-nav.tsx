@@ -15,7 +15,7 @@ export function MainNav({ items }: MainNavProps) {
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-2 md:flex">
         <Icons.logo className="h-6 w-6" />
-        <span className="hidden font-bold sm:inline-block">
+        <span className="text-foreground hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>
       </Link>
@@ -28,7 +28,7 @@ export function MainNav({ items }: MainNavProps) {
                   key={index}
                   href={item.href}
                   className={cn(
-                    "flex items-center text-lg font-semibold text-muted-foreground sm:text-sm",
+                    "text-secondary-foreground flex items-center text-lg font-semibold sm:text-sm",
                     item.disabled && "cursor-not-allowed opacity-80"
                   )}
                 >

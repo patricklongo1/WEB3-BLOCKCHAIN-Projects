@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme */
+    --background: #FFFFFF;
+    --foreground: #373737;
+
+    --muted: #F2F2F2;
+    --muted-foreground: #363F5F;
+
+    --popover: #FFFFFF;
+    --popover-foreground: #373737;
+
+    --border: #D9D9D9;
+    --input: #D9D9D9;
+
+    --card: #FFFFFF;
+    --card-foreground: #373737;
+
+    --primary: #1976d2;
+    --primary-foreground: #F2F2F2;
+
+    --secondary: #F2F2F2;
+    --secondary-foreground: #373737;
+
+    --accent: #F2F2F2;
+    --accent-foreground: #373737;
+
+    --destructive: #FF0000;
+    --destructive-foreground: #F2F2F2;
+
+    --ring: #D6D6D6;
+
+    --radius: 0.5rem;
+
+    /* Additional Colors */
+    --error: #f44336;
+    --error-foreground: #F2F2F2;
+
+    --warning: #ff9800;
+    --warning-foreground: #373737;
+
+    --info: #2196f3;
+    --info-foreground: #F2F2F2;
+
+    --success: #4caf50;
+    --success-foreground: #373737;
+  }
+
+  .dark {
+    /* Dark Theme */
+    --background: #2A403D;
+    --foreground: #D5D5D5;
+
+    --muted: #383838;
+    --muted-foreground: #1976d2;
+
+    --accent: #363838;
+    --accent-foreground: #F2F2F2;
+
+    --popover: #161616;
+    --popover-foreground: #D5D5D5;
+
+    --border: #366A89;
+    --input: #363838;
+
+    --card: #161616;
+    --card-foreground: #D5D5D5;
+
+    --primary: #F2F2F2;
+    --primary-foreground: #373737;
+
+    --secondary: #373737;
+    --secondary-foreground: #F2F2F2;
+
+    --destructive: #FF512F;
+    --destructive-foreground: #F2F2F2;
+
+    --ring: #366A89;
+
+    --radius: 0.5rem;
+
+    /* Additional Colors */
+    --error: #f44336;
+    --error-foreground: #F2F2F2;
+
+    --warning: #ff9800;
+    --warning-foreground: #373737;
+
+    --info: #2196f3;
+    --info-foreground: #F2F2F2;
+
+    --success: #4caf50;
+    --success-foreground: #373737;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
