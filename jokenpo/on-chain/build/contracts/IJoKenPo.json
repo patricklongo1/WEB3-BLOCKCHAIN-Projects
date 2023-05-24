@@ -82,7 +82,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum IJoKenPo.Options",
+          "internalType": "enum JKPLibrary.Options",
           "name": "newChoice",
           "type": "uint8"
         }
@@ -109,7 +109,7 @@
               "type": "uint32"
             }
           ],
-          "internalType": "struct IJoKenPo.Winner[]",
+          "internalType": "struct JKPLibrary.Winner[]",
           "name": "",
           "type": "tuple[]"
         }
@@ -118,7 +118,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBid\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCommission\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLeaderBoard\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"wins\",\"type\":\"uint32\"}],\"internalType\":\"struct IJoKenPo.Winner[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getResult\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enum IJoKenPo.Options\",\"name\":\"newChoice\",\"type\":\"uint8\"}],\"name\":\"play\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newBid\",\"type\":\"uint256\"}],\"name\":\"setBid\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"newCommission\",\"type\":\"uint8\"}],\"name\":\"setCommission\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IJoKenPo.sol\":\"IJoKenPo\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IJoKenPo.sol\":{\"keccak256\":\"0xa07d2def2d6712ee19ab1b908104d0ac92a1b2419d09b1740438ee44ec89be78\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3d77e3bb54ec13c86f0908a98f92be60b03e9ea4516238c56c22efd83aeecbc1\",\"dweb:/ipfs/QmVA9K5eoyXAK3thvpfKex3Mtr3Zk6RkakZ9MVddpMaYZP\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBid\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCommission\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLeaderBoard\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"wins\",\"type\":\"uint32\"}],\"internalType\":\"struct JKPLibrary.Winner[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getResult\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enum JKPLibrary.Options\",\"name\":\"newChoice\",\"type\":\"uint8\"}],\"name\":\"play\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newBid\",\"type\":\"uint256\"}],\"name\":\"setBid\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"newCommission\",\"type\":\"uint8\"}],\"name\":\"setCommission\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IJoKenPo.sol\":\"IJoKenPo\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IJoKenPo.sol\":{\"keccak256\":\"0xd56ccb347ee4dc1b73928f381484fe5908f897a8943379cab9724706021251bb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://869236e4bdc128cd488819e9463ef3957af27d8c497208e431070f68ab3d6fd9\",\"dweb:/ipfs/QmTUpdTXDgGSkTMLEZ6SLLYKsaypiB1PYqjA8Uq627PDfb\"]},\"project:/contracts/JKPLibrary.sol\":{\"keccak256\":\"0x3ddb824fd088bdf9741264f6a1259e67f789cdeda6d846ad4695a086dc093cd2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cc09dc5e3fda0c6ff3d666f84d45313f73c5b60d1b047bba4e9011f7445f0dec\",\"dweb:/ipfs/QmQW3NoohLUrpZyaNuDrdQb2GsnAEUeCWbneWWqeGuMSTz\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -126,16 +126,19 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "/**\r\n *Submitted for verification at Etherscan.io on 2022-11-04\r\n */\r\n\r\n// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.19.0;\r\n\r\ninterface IJoKenPo {\r\n    enum Options {\r\n        NONE,\r\n        ROCK,\r\n        PAPER,\r\n        SCISSORS\r\n    } //0, 1, 2, 3\r\n\r\n    struct Winner {\r\n        address wallet;\r\n        uint32 wins;\r\n    }\r\n\r\n    function getResult() external view returns (string memory);\r\n\r\n    function getBid() external view returns (uint256);\r\n\r\n    function getCommission() external view returns (uint8);\r\n\r\n    function setBid(uint256 newBid) external;\r\n\r\n    function setCommission(uint8 newCommission) external;\r\n\r\n    function getBalance() external view returns (uint);\r\n\r\n    function play(Options newChoice) external payable;\r\n\r\n    function getLeaderBoard() external view returns (Winner[] memory);\r\n}\r\n",
+  "source": "/**\r\n *Submitted for verification at Etherscan.io on 2022-11-04\r\n */\r\n\r\n// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.19 .0;\r\n\r\nimport {JKPLibrary} from \"./JKPLibrary.sol\";\r\n\r\ninterface IJoKenPo {\r\n    function getResult() external view returns (string memory);\r\n\r\n    function getBid() external view returns (uint256);\r\n\r\n    function getCommission() external view returns (uint8);\r\n\r\n    function setBid(uint256 newBid) external;\r\n\r\n    function setCommission(uint8 newCommission) external;\r\n\r\n    function getBalance() external view returns (uint);\r\n\r\n    function play(JKPLibrary.Options newChoice) external payable;\r\n\r\n    function getLeaderBoard()\r\n        external\r\n        view\r\n        returns (JKPLibrary.Winner[] memory);\r\n}\r\n",
   "sourcePath": "D:\\workspace\\WEB3-BLOCKCHAIN-Projects\\jokenpo\\on-chain\\contracts\\IJoKenPo.sol",
   "ast": {
     "absolutePath": "project:/contracts/IJoKenPo.sol",
     "exportedSymbols": {
       "IJoKenPo": [
-        55
+        47
+      ],
+      "JKPLibrary": [
+        248
       ]
     },
-    "id": 56,
+    "id": 48,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -149,7 +152,32 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "107:26:0"
+        "src": "107:27:0"
+      },
+      {
+        "absolutePath": "project:/contracts/JKPLibrary.sol",
+        "file": "./JKPLibrary.sol",
+        "id": 3,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 48,
+        "sourceUnit": 249,
+        "src": "138:44:0",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 2,
+              "name": "JKPLibrary",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 248,
+              "src": "146:10:0",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
       },
       {
         "abstract": false,
@@ -158,147 +186,42 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 55,
+        "id": 47,
         "linearizedBaseContracts": [
-          55
+          47
         ],
         "name": "IJoKenPo",
-        "nameLocation": "147:8:0",
+        "nameLocation": "196:8:0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "canonicalName": "IJoKenPo.Options",
-            "id": 6,
-            "members": [
-              {
-                "id": 2,
-                "name": "NONE",
-                "nameLocation": "187:4:0",
-                "nodeType": "EnumValue",
-                "src": "187:4:0"
-              },
-              {
-                "id": 3,
-                "name": "ROCK",
-                "nameLocation": "202:4:0",
-                "nodeType": "EnumValue",
-                "src": "202:4:0"
-              },
-              {
-                "id": 4,
-                "name": "PAPER",
-                "nameLocation": "217:5:0",
-                "nodeType": "EnumValue",
-                "src": "217:5:0"
-              },
-              {
-                "id": 5,
-                "name": "SCISSORS",
-                "nameLocation": "233:8:0",
-                "nodeType": "EnumValue",
-                "src": "233:8:0"
-              }
-            ],
-            "name": "Options",
-            "nameLocation": "168:7:0",
-            "nodeType": "EnumDefinition",
-            "src": "163:85:0"
-          },
-          {
-            "canonicalName": "IJoKenPo.Winner",
-            "id": 11,
-            "members": [
-              {
-                "constant": false,
-                "id": 8,
-                "mutability": "mutable",
-                "name": "wallet",
-                "nameLocation": "302:6:0",
-                "nodeType": "VariableDeclaration",
-                "scope": 11,
-                "src": "294:14:0",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_address",
-                  "typeString": "address"
-                },
-                "typeName": {
-                  "id": 7,
-                  "name": "address",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "294:7:0",
-                  "stateMutability": "nonpayable",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  }
-                },
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 10,
-                "mutability": "mutable",
-                "name": "wins",
-                "nameLocation": "326:4:0",
-                "nodeType": "VariableDeclaration",
-                "scope": 11,
-                "src": "319:11:0",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint32",
-                  "typeString": "uint32"
-                },
-                "typeName": {
-                  "id": 9,
-                  "name": "uint32",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "319:6:0",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint32",
-                    "typeString": "uint32"
-                  }
-                },
-                "visibility": "internal"
-              }
-            ],
-            "name": "Winner",
-            "nameLocation": "276:6:0",
-            "nodeType": "StructDefinition",
-            "scope": 55,
-            "src": "269:69:0",
-            "visibility": "public"
-          },
-          {
             "functionSelector": "de292789",
-            "id": 16,
+            "id": 8,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getResult",
-            "nameLocation": "355:9:0",
+            "nameLocation": "221:9:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 12,
+              "id": 4,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "364:2:0"
+              "src": "230:2:0"
             },
             "returnParameters": {
-              "id": 15,
+              "id": 7,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14,
+                  "id": 6,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16,
-                  "src": "390:13:0",
+                  "scope": 8,
+                  "src": "256:13:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -306,10 +229,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 13,
+                    "id": 5,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "390:6:0",
+                    "src": "256:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -318,42 +241,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "389:15:0"
+              "src": "255:15:0"
             },
-            "scope": 55,
-            "src": "346:59:0",
+            "scope": 47,
+            "src": "212:59:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "099a019d",
-            "id": 21,
+            "id": 13,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getBid",
-            "nameLocation": "422:6:0",
+            "nameLocation": "288:6:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 17,
+              "id": 9,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "428:2:0"
+              "src": "294:2:0"
             },
             "returnParameters": {
-              "id": 20,
+              "id": 12,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 19,
+                  "id": 11,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 21,
-                  "src": "454:7:0",
+                  "scope": 13,
+                  "src": "320:7:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -361,10 +284,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 18,
+                    "id": 10,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "454:7:0",
+                    "src": "320:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -373,42 +296,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "453:9:0"
+              "src": "319:9:0"
             },
-            "scope": 55,
-            "src": "413:50:0",
+            "scope": 47,
+            "src": "279:50:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "e65d6b49",
-            "id": 26,
+            "id": 18,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getCommission",
-            "nameLocation": "480:13:0",
+            "nameLocation": "346:13:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 22,
+              "id": 14,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "493:2:0"
+              "src": "359:2:0"
             },
             "returnParameters": {
-              "id": 25,
+              "id": 17,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 24,
+                  "id": 16,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 26,
-                  "src": "519:5:0",
+                  "scope": 18,
+                  "src": "385:5:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -416,10 +339,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 23,
+                    "id": 15,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "519:5:0",
+                    "src": "385:5:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -428,36 +351,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "518:7:0"
+              "src": "384:7:0"
             },
-            "scope": 55,
-            "src": "471:55:0",
+            "scope": 47,
+            "src": "337:55:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "cef55b9a",
-            "id": 31,
+            "id": 23,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setBid",
-            "nameLocation": "543:6:0",
+            "nameLocation": "409:6:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 29,
+              "id": 21,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 28,
+                  "id": 20,
                   "mutability": "mutable",
                   "name": "newBid",
-                  "nameLocation": "558:6:0",
+                  "nameLocation": "424:6:0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31,
-                  "src": "550:14:0",
+                  "scope": 23,
+                  "src": "416:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -465,10 +388,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 27,
+                    "id": 19,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "550:7:0",
+                    "src": "416:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -477,42 +400,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "549:16:0"
+              "src": "415:16:0"
             },
             "returnParameters": {
-              "id": 30,
+              "id": 22,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "574:0:0"
+              "src": "440:0:0"
             },
-            "scope": 55,
-            "src": "534:41:0",
+            "scope": 47,
+            "src": "400:41:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "8a44810d",
-            "id": 36,
+            "id": 28,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setCommission",
-            "nameLocation": "592:13:0",
+            "nameLocation": "458:13:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 34,
+              "id": 26,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 33,
+                  "id": 25,
                   "mutability": "mutable",
                   "name": "newCommission",
-                  "nameLocation": "612:13:0",
+                  "nameLocation": "478:13:0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 36,
-                  "src": "606:19:0",
+                  "scope": 28,
+                  "src": "472:19:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -520,10 +443,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 32,
+                    "id": 24,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "606:5:0",
+                    "src": "472:5:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -532,48 +455,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "605:21:0"
+              "src": "471:21:0"
             },
             "returnParameters": {
-              "id": 35,
+              "id": 27,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "635:0:0"
+              "src": "501:0:0"
             },
-            "scope": 55,
-            "src": "583:53:0",
+            "scope": 47,
+            "src": "449:53:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "12065fe0",
-            "id": 41,
+            "id": 33,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getBalance",
-            "nameLocation": "653:10:0",
+            "nameLocation": "519:10:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 37,
+              "id": 29,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "663:2:0"
+              "src": "529:2:0"
             },
             "returnParameters": {
-              "id": 40,
+              "id": 32,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 39,
+                  "id": 31,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 41,
-                  "src": "689:4:0",
+                  "scope": 33,
+                  "src": "555:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -581,10 +504,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 38,
+                    "id": 30,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "689:4:0",
+                    "src": "555:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -593,24 +516,96 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "688:6:0"
+              "src": "554:6:0"
             },
-            "scope": 55,
-            "src": "644:51:0",
+            "scope": 47,
+            "src": "510:51:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "53a04b05",
-            "id": 47,
+            "id": 39,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "play",
-            "nameLocation": "712:4:0",
+            "nameLocation": "578:4:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
+              "id": 37,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 36,
+                  "mutability": "mutable",
+                  "name": "newChoice",
+                  "nameLocation": "602:9:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 39,
+                  "src": "583:28:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Options_$242",
+                    "typeString": "enum JKPLibrary.Options"
+                  },
+                  "typeName": {
+                    "id": 35,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 34,
+                      "name": "JKPLibrary.Options",
+                      "nameLocations": [
+                        "583:10:0",
+                        "594:7:0"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 242,
+                      "src": "583:18:0"
+                    },
+                    "referencedDeclaration": 242,
+                    "src": "583:18:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_Options_$242",
+                      "typeString": "enum JKPLibrary.Options"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "582:30:0"
+            },
+            "returnParameters": {
+              "id": 38,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "629:0:0"
+            },
+            "scope": 47,
+            "src": "569:61:0",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "c29d72bc",
+            "id": 46,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getLeaderBoard",
+            "nameLocation": "647:14:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 40,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "661:2:0"
+            },
+            "returnParameters": {
               "id": 45,
               "nodeType": "ParameterList",
               "parameters": [
@@ -618,135 +613,65 @@
                   "constant": false,
                   "id": 44,
                   "mutability": "mutable",
-                  "name": "newChoice",
-                  "nameLocation": "725:9:0",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 47,
-                  "src": "717:17:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_Options_$6",
-                    "typeString": "enum IJoKenPo.Options"
-                  },
-                  "typeName": {
-                    "id": 43,
-                    "nodeType": "UserDefinedTypeName",
-                    "pathNode": {
-                      "id": 42,
-                      "name": "Options",
-                      "nameLocations": [
-                        "717:7:0"
-                      ],
-                      "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 6,
-                      "src": "717:7:0"
-                    },
-                    "referencedDeclaration": 6,
-                    "src": "717:7:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_Options_$6",
-                      "typeString": "enum IJoKenPo.Options"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "716:19:0"
-            },
-            "returnParameters": {
-              "id": 46,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "752:0:0"
-            },
-            "scope": 55,
-            "src": "703:50:0",
-            "stateMutability": "payable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "functionSelector": "c29d72bc",
-            "id": 54,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getLeaderBoard",
-            "nameLocation": "770:14:0",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 48,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "784:2:0"
-            },
-            "returnParameters": {
-              "id": 53,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 52,
-                  "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 54,
-                  "src": "810:15:0",
+                  "scope": 46,
+                  "src": "714:26:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Winner_$11_memory_ptr_$dyn_memory_ptr",
-                    "typeString": "struct IJoKenPo.Winner[]"
+                    "typeIdentifier": "t_array$_t_struct$_Winner_$247_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct JKPLibrary.Winner[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 50,
+                      "id": 42,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 49,
-                        "name": "Winner",
+                        "id": 41,
+                        "name": "JKPLibrary.Winner",
                         "nameLocations": [
-                          "810:6:0"
+                          "714:10:0",
+                          "725:6:0"
                         ],
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 11,
-                        "src": "810:6:0"
+                        "referencedDeclaration": 247,
+                        "src": "714:17:0"
                       },
-                      "referencedDeclaration": 11,
-                      "src": "810:6:0",
+                      "referencedDeclaration": 247,
+                      "src": "714:17:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Winner_$11_storage_ptr",
-                        "typeString": "struct IJoKenPo.Winner"
+                        "typeIdentifier": "t_struct$_Winner_$247_storage_ptr",
+                        "typeString": "struct JKPLibrary.Winner"
                       }
                     },
-                    "id": 51,
+                    "id": 43,
                     "nodeType": "ArrayTypeName",
-                    "src": "810:8:0",
+                    "src": "714:19:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Winner_$11_storage_$dyn_storage_ptr",
-                      "typeString": "struct IJoKenPo.Winner[]"
+                      "typeIdentifier": "t_array$_t_struct$_Winner_$247_storage_$dyn_storage_ptr",
+                      "typeString": "struct JKPLibrary.Winner[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "809:17:0"
+              "src": "713:28:0"
             },
-            "scope": 55,
-            "src": "761:66:0",
+            "scope": 47,
+            "src": "638:104:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 56,
-        "src": "137:693:0",
+        "scope": 48,
+        "src": "186:559:0",
         "usedErrors": []
       }
     ],
-    "src": "107:725:0"
+    "src": "107:640:0"
   },
   "compiler": {
     "name": "solc",
@@ -754,7 +679,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.14",
-  "updatedAt": "2023-05-23T02:33:00.925Z",
+  "updatedAt": "2023-05-24T01:54:33.141Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

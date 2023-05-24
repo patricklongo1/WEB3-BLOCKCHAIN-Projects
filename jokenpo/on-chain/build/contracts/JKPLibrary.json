@@ -1,0 +1,190 @@
+{
+  "contractName": "JKPLibrary",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/JKPLibrary.sol\":\"JKPLibrary\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/JKPLibrary.sol\":{\"keccak256\":\"0x3ddb824fd088bdf9741264f6a1259e67f789cdeda6d846ad4695a086dc093cd2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cc09dc5e3fda0c6ff3d666f84d45313f73c5b60d1b047bba4e9011f7445f0dec\",\"dweb:/ipfs/QmQW3NoohLUrpZyaNuDrdQb2GsnAEUeCWbneWWqeGuMSTz\"]}},\"version\":1}",
+  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201139f478f44d626ecf0fba3535a3aac0acd3f72964147b83a710c8e84b51e9c464736f6c63430008130033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201139f478f44d626ecf0fba3535a3aac0acd3f72964147b83a710c8e84b51e9c464736f6c63430008130033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "66:204:2:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;66:204:2;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "66:204:2:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.19 .0;\r\n\r\nlibrary JKPLibrary {\r\n    enum Options {\r\n        NONE,\r\n        ROCK,\r\n        PAPER,\r\n        SCISSORS\r\n    } //0, 1, 2, 3\r\n\r\n    struct Winner {\r\n        address wallet;\r\n        uint32 wins;\r\n    }\r\n}\r\n",
+  "sourcePath": "D:\\workspace\\WEB3-BLOCKCHAIN-Projects\\jokenpo\\on-chain\\contracts\\JKPLibrary.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/JKPLibrary.sol",
+    "exportedSymbols": {
+      "JKPLibrary": [
+        248
+      ]
+    },
+    "id": 249,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 237,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".19",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:27:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "JKPLibrary",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 248,
+        "linearizedBaseContracts": [
+          248
+        ],
+        "name": "JKPLibrary",
+        "nameLocation": "74:10:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "JKPLibrary.Options",
+            "id": 242,
+            "members": [
+              {
+                "id": 238,
+                "name": "NONE",
+                "nameLocation": "116:4:2",
+                "nodeType": "EnumValue",
+                "src": "116:4:2"
+              },
+              {
+                "id": 239,
+                "name": "ROCK",
+                "nameLocation": "131:4:2",
+                "nodeType": "EnumValue",
+                "src": "131:4:2"
+              },
+              {
+                "id": 240,
+                "name": "PAPER",
+                "nameLocation": "146:5:2",
+                "nodeType": "EnumValue",
+                "src": "146:5:2"
+              },
+              {
+                "id": 241,
+                "name": "SCISSORS",
+                "nameLocation": "162:8:2",
+                "nodeType": "EnumValue",
+                "src": "162:8:2"
+              }
+            ],
+            "name": "Options",
+            "nameLocation": "97:7:2",
+            "nodeType": "EnumDefinition",
+            "src": "92:85:2"
+          },
+          {
+            "canonicalName": "JKPLibrary.Winner",
+            "id": 247,
+            "members": [
+              {
+                "constant": false,
+                "id": 244,
+                "mutability": "mutable",
+                "name": "wallet",
+                "nameLocation": "231:6:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 247,
+                "src": "223:14:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 243,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "223:7:2",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 246,
+                "mutability": "mutable",
+                "name": "wins",
+                "nameLocation": "255:4:2",
+                "nodeType": "VariableDeclaration",
+                "scope": 247,
+                "src": "248:11:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 245,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "248:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Winner",
+            "nameLocation": "205:6:2",
+            "nodeType": "StructDefinition",
+            "scope": 248,
+            "src": "198:69:2",
+            "visibility": "public"
+          }
+        ],
+        "scope": 249,
+        "src": "66:204:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "35:237:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.19+commit.7dd6d404.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x7aCe5D8450d7CB91931948F07ea5e612A92FB6c1",
+      "transactionHash": "0xe6547db3a137065c718b8525d32fce1f38a1782491175aa0b05d7079098942c4"
+    }
+  },
+  "schemaVersion": "3.4.14",
+  "updatedAt": "2023-05-24T01:54:46.957Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
