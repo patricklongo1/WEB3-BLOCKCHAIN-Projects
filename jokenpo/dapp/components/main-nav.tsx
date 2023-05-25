@@ -1,10 +1,9 @@
-import * as React from "react"
-import Link from "next/link"
-
-import { NavItem } from "@/types/nav"
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
+import { Icons } from '@/components/icons'
+import { siteConfig } from '@/config/site'
+import { cn } from '@/lib/utils'
+import { NavItem } from '@/types/nav'
+import Link from 'next/link'
+import * as React from 'react'
 
 interface MainNavProps {
   items?: NavItem[]
@@ -15,7 +14,7 @@ export function MainNav({ items }: MainNavProps) {
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-2 md:flex">
         <Icons.logo className="h-6 w-6" />
-        <span className="text-foreground hidden font-bold sm:inline-block">
+        <span className="hidden font-bold text-foreground sm:inline-block">
           {siteConfig.name}
         </span>
       </Link>
@@ -28,13 +27,13 @@ export function MainNav({ items }: MainNavProps) {
                   key={index}
                   href={item.href}
                   className={cn(
-                    "text-secondary-foreground flex items-center text-lg font-semibold sm:text-sm",
-                    item.disabled && "cursor-not-allowed opacity-80"
+                    'flex items-center text-lg font-semibold text-secondary-foreground sm:text-sm',
+                    item.disabled && 'cursor-not-allowed opacity-80',
                   )}
                 >
                   {item.title}
                 </Link>
-              )
+              ),
           )}
         </nav>
       ) : null}

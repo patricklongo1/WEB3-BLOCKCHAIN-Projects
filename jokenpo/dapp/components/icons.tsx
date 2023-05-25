@@ -3,8 +3,8 @@ import {
   Moon,
   SunMedium,
   type Icon as LucideIcon,
-} from "lucide-react"
-import Image from "next/image"
+} from 'lucide-react'
+import Image from 'next/image'
 
 export type Icon = LucideIcon
 
@@ -13,12 +13,7 @@ export const Icons = {
   moon: Moon,
   logo: (props: LucideProps) => (
     <>
-      <Image
-        src="/logo192.png"
-        width={35}
-        height={35}
-        alt="logo"
-      />
+      <Image src="/logo192.png" width={35} height={35} alt="logo" />
     </>
   ),
   gitHub: (props: LucideProps) => (
