@@ -1,7 +1,9 @@
+import metaMaskIcon from '../assets/metamask.svg'
 import {
   LucideProps,
   Moon,
   SunMedium,
+  Copy,
   type Icon as LucideIcon,
 } from 'lucide-react'
 import Image from 'next/image'
@@ -11,9 +13,15 @@ export type Icon = LucideIcon
 export const Icons = {
   sun: SunMedium,
   moon: Moon,
+  copy: Copy,
   logo: (props: LucideProps) => (
     <>
       <Image src="/logo192.png" width={35} height={35} alt="logo" />
+    </>
+  ),
+  metamask: (props: LucideProps) => (
+    <>
+      <Image src={metaMaskIcon} width={35} height={35} alt="metamask" />
     </>
   ),
   gitHub: (props: LucideProps) => (

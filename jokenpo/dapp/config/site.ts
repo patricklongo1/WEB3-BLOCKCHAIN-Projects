@@ -1,17 +1,16 @@
-export type SiteConfig = typeof siteConfig
-
 export const siteConfig = {
-  name: "JoKenPo - dApp",
-  description:
-    "A dApp to play JoKenPo and get fun.",
+  name: 'JoKenPo - dApp',
+  description: 'A dApp to play JoKenPo and get fun.',
   mainNav: [
     {
-      title: "Home",
-      href: "/",
+      title: 'Home',
+      href: '/',
     },
   ],
   links: {
-    github: "https://github.com/patricklongo1/WEB3-BLOCKCHAIN-SMART_CONTRACTS",
-    docs: "https://ui.shadcn.com",
+    github: 'https://github.com/patricklongo1/WEB3-BLOCKCHAIN-SMART_CONTRACTS',
+    docs: 'https://ui.shadcn.com',
   },
 }
+
+export type SiteConfig = typeof siteConfig

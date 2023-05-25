@@ -1,3 +1,4 @@
+import { MetamaskButtonLogin } from './metamask-button-login'
 import { Icons } from '@/components/icons'
 import { MainNav } from '@/components/main-nav'
 import { ThemeToggle } from '@/components/theme-toggle'
@@ -28,6 +29,8 @@ export function SiteHeader() {
               </div>
             </Link>
             <ThemeToggle />
+
+            <MetamaskButtonLogin />
           </nav>
         </div>
       </div>

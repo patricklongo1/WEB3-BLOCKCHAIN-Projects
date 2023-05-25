@@ -1,9 +1,9 @@
-/** @type {import('next').NextConfig} */
+/* eslint-disable prettier/prettier */
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
     appDir: true,
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
