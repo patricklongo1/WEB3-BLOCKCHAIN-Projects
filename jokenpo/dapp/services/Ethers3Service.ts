@@ -1,6 +1,12 @@
+import ABI from './abi.json'
 import { ethers } from 'ethers'
 
-export async function connect(): Promise<string[]> {
+type LoginResult = {
+  accounts: string[]
+  isAdmin: boolean
+}
+
+export async function connect(): Promise<LoginResult> {
   if (!window.ethereum) {
     throw new Error('No MetaMask found.')
   }
@@ -14,6 +20,18 @@ export async function connect(): Promise<string[]> {
     throw new Error('No accounts allowed.')
   }
 
+  const contractAddress = `${process.env.NEXT_PUBLIC_CONTRACT_ADDRESS}`
+
+  const contract = new ethers.Contract(contractAddress, ABI, provider)
+
+  let owner
+  try {
+    owner = await contract.owner()
+  } catch (error) {
+    console.error('Error calling owner():', error)
+  }
+  const isAdmin = accounts[0] === owner
   localStorage.setItem('wallet', accounts[0])
-  return accounts
+  localStorage.setItem('isAdmin', isAdmin ? 'true' : 'false')
+  return { accounts, isAdmin } as LoginResult
 }

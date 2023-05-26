@@ -19,9 +19,10 @@ export function MetamaskButtonLogin() {
 
   async function handleConnectMetamask() {
     try {
-      const accountsFromMetamask = await connect()
-      /* setAccounts(accountsFromMetamask) */
-      setSelectedAccount(accountsFromMetamask[0])
+      const { accounts, isAdmin } = await connect()
+      alert(isAdmin)
+      /* setAccounts(accounts) */
+      setSelectedAccount(accounts[0])
     } catch (error: any) {
       console.log(error)
       /* setStatus(
