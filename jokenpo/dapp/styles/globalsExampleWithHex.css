@@ -4,6 +4,11 @@
 
 @layer base {
   :root {
+     /* plus */
+     --foreground-rgb: 240, 248, 255;
+     --background-start-rgb: 240, 248, 255;
+     --background-end-rgb: 135, 206, 235;
+
     /* Light Theme */
     --background: #FFFFFF;
     --foreground: #373737;
@@ -51,6 +56,11 @@
   }
 
   .dark {
+    /* plus */
+    --foreground-rgb: 240, 248, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
     /* Dark Theme */
     --background: #2A403D;
     --foreground: #D5D5D5;

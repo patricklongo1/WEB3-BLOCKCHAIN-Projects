@@ -4,6 +4,9 @@ import {
   Moon,
   SunMedium,
   Copy,
+  Settings,
+  LogOut,
+  Loader2,
   type Icon as LucideIcon,
 } from 'lucide-react'
 import Image from 'next/image'
@@ -14,14 +17,21 @@ export const Icons = {
   sun: SunMedium,
   moon: Moon,
   copy: Copy,
+  settings: Settings,
+  logout: LogOut,
   logo: (props: LucideProps) => (
     <>
       <Image src="/logo192.png" width={35} height={35} alt="logo" />
     </>
   ),
+  loading: (props: LucideProps) => (
+    <>
+      <Loader2 className="h-9 w-9 animate-spin" />
+    </>
+  ),
   metamask: (props: LucideProps) => (
     <>
-      <Image src={metaMaskIcon} width={35} height={35} alt="metamask" />
+      <Image src={metaMaskIcon} width={36} height={36} alt="metamask" />
     </>
   ),
   gitHub: (props: LucideProps) => (

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */

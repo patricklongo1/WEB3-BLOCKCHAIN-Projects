@@ -8,8 +8,8 @@ export default function IndexPage() {
   return (
     <section className="container flex w-full flex-col items-center justify-center p-20">
       <div className="relative">
-        <div className="absolute inset-0 bg-gradient-radial from-transparent to-white opacity-90 blur-3xl dark:from-transparent dark:to-sky-50"></div>
         <Image src="/logo512.png" width={250} height={250} alt="logo" />
+        <div className="absolute inset-0 bg-gradient-conic from-indigo-300 via-purple-300 to-pink-300 opacity-70 blur-3xl"></div>
       </div>
       <div className="flex gap-4">
         {/* <Link
