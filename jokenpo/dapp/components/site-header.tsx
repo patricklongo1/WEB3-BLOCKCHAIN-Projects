@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 export function SiteHeader() {
   const walletInfosStringfied = cookies().get('walletInfos')?.value
-  let isAdmin = false
+  let isAdmin = 'false'
   if (walletInfosStringfied) {
     const walletInfos = JSON.parse(walletInfosStringfied)
     isAdmin = walletInfos.isAdmin
@@ -37,8 +37,8 @@ export function SiteHeader() {
               </div>
             </Link>
             <ThemeToggle />
-            {isAdmin && (
-              <Link href="/">
+            {isAdmin !== 'false' && (
+              <Link href="/settings">
                 <Icons.settings />
               </Link>
             )}
@@ -46,7 +46,7 @@ export function SiteHeader() {
           </nav>
         </div>
       </div>
-      <div className="h-px bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
+      <div className="h-px bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 dark:from-indigo-300 dark:via-purple-300 dark:to-pink-300" />
     </header>
   )
 }

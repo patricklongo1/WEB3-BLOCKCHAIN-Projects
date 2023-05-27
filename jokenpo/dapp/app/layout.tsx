@@ -43,7 +43,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
-              <div className="flex-1">{children}</div>
+              <div className="relative self-center">
+                <div className="mt-[-150px] h-[250px] w-[300px] bg-gradient-conic from-indigo-500 via-purple-500 to-pink-500 opacity-20 blur-3xl dark:from-indigo-300 dark:via-purple-300 dark:to-pink-300 dark:opacity-30" />
+              </div>
+              <div className="mt-[-100px] flex-1 px-12 text-foreground">
+                {children}
+              </div>
             </div>
             <TailwindIndicator />
           </ThemeProvider>
