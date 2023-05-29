@@ -1,13 +1,13 @@
 import { SettingsForm } from '@/components/settings-form'
 
-export default function Settings() {
+export default function SettingsPage() {
   return (
     <section className="container mx-auto px-4 py-8">
-      <h1 className="mb-6 text-center text-2xl font-extrabold sm:text-4xl">
+      <h1 className="mb-6 font-mono text-2xl font-extrabold sm:text-4xl">
         Settings
       </h1>
 
-      <p className="mb-6 text-sm leading-6 sm:leading-7">
+      <p className="mb-6 text-sm leading-6 sm:text-lg sm:leading-7">
         Welcome, Admin. Here you can make some changes to the contract&apos;s
         functionality. They are as follows: Change the bet amount for each play
         by the players. Change the commission amount that goes to the house.

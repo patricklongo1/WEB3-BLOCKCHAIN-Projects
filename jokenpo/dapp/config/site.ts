@@ -6,6 +6,10 @@ export const siteConfig = {
       title: 'Home',
       href: '/',
     },
+    {
+      title: 'Leaderboard',
+      href: '/leaderboard',
+    },
   ],
   links: {
     github: 'https://github.com/patricklongo1/WEB3-BLOCKCHAIN-SMART_CONTRACTS',
