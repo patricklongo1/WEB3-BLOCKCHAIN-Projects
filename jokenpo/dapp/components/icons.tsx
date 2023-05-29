@@ -7,6 +7,7 @@ import {
   Settings,
   LogOut,
   Loader2,
+  Send,
   type Icon as LucideIcon,
 } from 'lucide-react'
 import Image from 'next/image'
@@ -27,6 +28,16 @@ export const Icons = {
   loading: (props: LucideProps) => (
     <>
       <Loader2 className="h-9 w-9 animate-spin" />
+    </>
+  ),
+  loading2: (props: LucideProps) => (
+    <>
+      <Loader2 className="h-6 w-6 animate-spin text-primary-foreground" />
+    </>
+  ),
+  send: (props: LucideProps) => (
+    <>
+      <Send className="h-6 w-6 text-primary-foreground hover:animate-pulse" />
     </>
   ),
   metamask: (props: LucideProps) => (

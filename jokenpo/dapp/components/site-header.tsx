@@ -46,7 +46,7 @@ export function SiteHeader() {
           </nav>
         </div>
       </div>
-      <div className="h-px bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300 " />
+      <div className="h-px bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300" />
     </header>
   )
 }

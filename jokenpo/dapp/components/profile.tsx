@@ -1,8 +1,6 @@
+import CopyToClipboard from './copy-to-clipboard'
 import { Icons } from '@/components/icons'
-import { Button } from '@/components/ui/button'
 import { cookies } from 'next/headers'
-
-/* import { CopyToClipboard } from 'react-copy-to-clipboard' */
 
 export function Profile() {
   const walletInfosStringfied = cookies().get('walletInfos')!.value
@@ -21,11 +19,7 @@ export function Profile() {
     <>
       <code className="flex items-center rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
         {formatAccount(wallet)}
-        {/* <CopyToClipboard text={wallet}> */}
-        <Button className="ml-3 h-4 bg-transparent p-0 text-foreground hover:bg-transparent hover:text-blue-400">
-          <Icons.copy className="h-4 w-4" />
-        </Button>
-        {/* </CopyToClipboard> */}
+        <CopyToClipboard textToCopy={wallet} />
       </code>
       <a
         href="/api/auth/logout"
