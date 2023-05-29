@@ -17,10 +17,11 @@ export function Profile() {
 
   return (
     <>
-      <code className="flex items-center rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+      <code className="flex w-14 items-center overflow-hidden rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-xs font-semibold sm:w-full sm:text-sm">
         {formatAccount(wallet)}
         <CopyToClipboard textToCopy={wallet} />
       </code>
+
       <a
         href="/api/auth/logout"
         className="block text-red-400 hover:text-red-300"

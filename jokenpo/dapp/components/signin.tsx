@@ -72,8 +72,8 @@ export function SignIn() {
             {!isLoading ? <Icons.metamask /> : <Icons.loading />}
           </Button>
         </TooltipTrigger>
-        <TooltipContent>
-          <p>Connect with metamask</p>
+        <TooltipContent className="rounded-md bg-gray-800 p-1 text-base ring-1">
+          <p>Connect metamask</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
