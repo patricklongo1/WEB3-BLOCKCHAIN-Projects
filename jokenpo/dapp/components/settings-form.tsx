@@ -77,39 +77,54 @@ export function SettingsForm() {
   }, [])
 
   async function handleChangeBid() {
-    const contract = await getContractWithSigner()
+    try {
+      const contract = await getContractWithSigner()
 
-    const tx = await contract.setBid(bid)
-    await tx.wait()
+      const tx = await contract.setBid(bid)
+      await tx.wait()
 
-    setStatus({
-      message: `Your transaction is in progress. You can check `,
-      hash: tx.hash,
-    })
+      setStatus({
+        message: `Your transaction is in progress. You can check `,
+        hash: tx.hash,
+      })
+    } catch (error: any) {
+      console.log(error)
+      setError(`Error while update bid: ${error.message}`)
+    }
   }
 
   async function handleChangeCommission() {
-    const contract = await getContractWithSigner()
+    try {
+      const contract = await getContractWithSigner()
 
-    const tx = await contract.setCommission(commission)
-    await tx.wait()
+      const tx = await contract.setCommission(commission)
+      await tx.wait()
 
-    setStatus({
-      message: `Your transaction is in progress. You can check `,
-      hash: tx.hash,
-    })
+      setStatus({
+        message: `Your transaction is in progress. You can check `,
+        hash: tx.hash,
+      })
+    } catch (error: any) {
+      console.log(error)
+      setError(`Error while update commission: ${error.message}`)
+    }
   }
 
   async function handleChangeContract() {
-    const contract = await getContractWithSigner()
+    try {
+      const instanceContract = await getContractWithSigner()
 
-    const tx = await contract.upgrade(contract)
-    await tx.wait()
+      const tx = await instanceContract.upgrade(contract)
+      await tx.wait()
 
-    setStatus({
-      message: `Your transaction is in progress. You can check `,
-      hash: tx.hash,
-    })
+      setStatus({
+        message: `Your transaction is in progress. You can check `,
+        hash: tx.hash,
+      })
+    } catch (error: any) {
+      console.log(error)
+      setError(`Error while upgrade contract: ${error.message}`)
+    }
   }
 
   return (

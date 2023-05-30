@@ -88,7 +88,13 @@
         }
       ],
       "name": "play",
-      "outputs": [],
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
       "stateMutability": "payable",
       "type": "function"
     },
@@ -118,7 +124,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBid\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCommission\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLeaderBoard\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"wins\",\"type\":\"uint32\"}],\"internalType\":\"struct JKPLibrary.Winner[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getResult\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enum JKPLibrary.Options\",\"name\":\"newChoice\",\"type\":\"uint8\"}],\"name\":\"play\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newBid\",\"type\":\"uint256\"}],\"name\":\"setBid\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"newCommission\",\"type\":\"uint8\"}],\"name\":\"setCommission\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IJoKenPo.sol\":\"IJoKenPo\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IJoKenPo.sol\":{\"keccak256\":\"0xd56ccb347ee4dc1b73928f381484fe5908f897a8943379cab9724706021251bb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://869236e4bdc128cd488819e9463ef3957af27d8c497208e431070f68ab3d6fd9\",\"dweb:/ipfs/QmTUpdTXDgGSkTMLEZ6SLLYKsaypiB1PYqjA8Uq627PDfb\"]},\"project:/contracts/JKPLibrary.sol\":{\"keccak256\":\"0x3ddb824fd088bdf9741264f6a1259e67f789cdeda6d846ad4695a086dc093cd2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cc09dc5e3fda0c6ff3d666f84d45313f73c5b60d1b047bba4e9011f7445f0dec\",\"dweb:/ipfs/QmQW3NoohLUrpZyaNuDrdQb2GsnAEUeCWbneWWqeGuMSTz\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBid\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCommission\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLeaderBoard\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"wins\",\"type\":\"uint32\"}],\"internalType\":\"struct JKPLibrary.Winner[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getResult\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enum JKPLibrary.Options\",\"name\":\"newChoice\",\"type\":\"uint8\"}],\"name\":\"play\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newBid\",\"type\":\"uint256\"}],\"name\":\"setBid\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"newCommission\",\"type\":\"uint8\"}],\"name\":\"setCommission\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IJoKenPo.sol\":\"IJoKenPo\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IJoKenPo.sol\":{\"keccak256\":\"0xf2fa98861930c70362e6360d884501f97796e25faa5b727de127d1d89ded56b8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5fc091781bcd38e8c7a3ab70406b604b5844fd27847e12917a9fb231053a0461\",\"dweb:/ipfs/QmbfmYicp3HFEp3MUDryvEQarkWWASSEN83yWYbFaYNjEi\"]},\"project:/contracts/JKPLibrary.sol\":{\"keccak256\":\"0x3ddb824fd088bdf9741264f6a1259e67f789cdeda6d846ad4695a086dc093cd2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cc09dc5e3fda0c6ff3d666f84d45313f73c5b60d1b047bba4e9011f7445f0dec\",\"dweb:/ipfs/QmQW3NoohLUrpZyaNuDrdQb2GsnAEUeCWbneWWqeGuMSTz\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -126,19 +132,19 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "/**\r\n *Submitted for verification at Etherscan.io on 2022-11-04\r\n */\r\n\r\n// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.19 .0;\r\n\r\nimport {JKPLibrary} from \"./JKPLibrary.sol\";\r\n\r\ninterface IJoKenPo {\r\n    function getResult() external view returns (string memory);\r\n\r\n    function getBid() external view returns (uint256);\r\n\r\n    function getCommission() external view returns (uint8);\r\n\r\n    function setBid(uint256 newBid) external;\r\n\r\n    function setCommission(uint8 newCommission) external;\r\n\r\n    function getBalance() external view returns (uint);\r\n\r\n    function play(JKPLibrary.Options newChoice) external payable;\r\n\r\n    function getLeaderBoard()\r\n        external\r\n        view\r\n        returns (JKPLibrary.Winner[] memory);\r\n}\r\n",
+  "source": "/**\r\n *Submitted for verification at Etherscan.io on 2022-11-04\r\n */\r\n\r\n// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.19 .0;\r\n\r\nimport {JKPLibrary} from \"./JKPLibrary.sol\";\r\n\r\ninterface IJoKenPo {\r\n    function getResult() external view returns (string memory);\r\n\r\n    function getBid() external view returns (uint256);\r\n\r\n    function getCommission() external view returns (uint8);\r\n\r\n    function setBid(uint256 newBid) external;\r\n\r\n    function setCommission(uint8 newCommission) external;\r\n\r\n    function getBalance() external view returns (uint);\r\n\r\n    function play(\r\n        JKPLibrary.Options newChoice\r\n    ) external payable returns (string memory);\r\n\r\n    function getLeaderBoard()\r\n        external\r\n        view\r\n        returns (JKPLibrary.Winner[] memory);\r\n}\r\n",
   "sourcePath": "D:\\workspace\\WEB3-BLOCKCHAIN-Projects\\jokenpo\\on-chain\\contracts\\IJoKenPo.sol",
   "ast": {
     "absolutePath": "project:/contracts/IJoKenPo.sol",
     "exportedSymbols": {
       "IJoKenPo": [
-        47
+        49
       ],
       "JKPLibrary": [
-        248
+        263
       ]
     },
-    "id": 48,
+    "id": 50,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -160,8 +166,8 @@
         "id": 3,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 48,
-        "sourceUnit": 249,
+        "scope": 50,
+        "sourceUnit": 264,
         "src": "138:44:0",
         "symbolAliases": [
           {
@@ -170,7 +176,7 @@
               "name": "JKPLibrary",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "referencedDeclaration": 248,
+              "referencedDeclaration": 263,
               "src": "146:10:0",
               "typeDescriptions": {}
             },
@@ -186,9 +192,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 47,
+        "id": 49,
         "linearizedBaseContracts": [
-          47
+          49
         ],
         "name": "IJoKenPo",
         "nameLocation": "196:8:0",
@@ -243,7 +249,7 @@
               ],
               "src": "255:15:0"
             },
-            "scope": 47,
+            "scope": 49,
             "src": "212:59:0",
             "stateMutability": "view",
             "virtual": false,
@@ -298,7 +304,7 @@
               ],
               "src": "319:9:0"
             },
-            "scope": 47,
+            "scope": 49,
             "src": "279:50:0",
             "stateMutability": "view",
             "virtual": false,
@@ -353,7 +359,7 @@
               ],
               "src": "384:7:0"
             },
-            "scope": 47,
+            "scope": 49,
             "src": "337:55:0",
             "stateMutability": "view",
             "virtual": false,
@@ -408,7 +414,7 @@
               "parameters": [],
               "src": "440:0:0"
             },
-            "scope": 47,
+            "scope": 49,
             "src": "400:41:0",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -463,7 +469,7 @@
               "parameters": [],
               "src": "501:0:0"
             },
-            "scope": 47,
+            "scope": 49,
             "src": "449:53:0",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -518,7 +524,7 @@
               ],
               "src": "554:6:0"
             },
-            "scope": 47,
+            "scope": 49,
             "src": "510:51:0",
             "stateMutability": "view",
             "virtual": false,
@@ -526,7 +532,7 @@
           },
           {
             "functionSelector": "53a04b05",
-            "id": 39,
+            "id": 41,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -542,14 +548,14 @@
                   "id": 36,
                   "mutability": "mutable",
                   "name": "newChoice",
-                  "nameLocation": "602:9:0",
+                  "nameLocation": "612:9:0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 39,
-                  "src": "583:28:0",
+                  "scope": 41,
+                  "src": "593:28:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_Options_$242",
+                    "typeIdentifier": "t_enum$_Options_$257",
                     "typeString": "enum JKPLibrary.Options"
                   },
                   "typeName": {
@@ -559,119 +565,147 @@
                       "id": 34,
                       "name": "JKPLibrary.Options",
                       "nameLocations": [
-                        "583:10:0",
-                        "594:7:0"
+                        "593:10:0",
+                        "604:7:0"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 242,
-                      "src": "583:18:0"
+                      "referencedDeclaration": 257,
+                      "src": "593:18:0"
                     },
-                    "referencedDeclaration": 242,
-                    "src": "583:18:0",
+                    "referencedDeclaration": 257,
+                    "src": "593:18:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_Options_$242",
+                      "typeIdentifier": "t_enum$_Options_$257",
                       "typeString": "enum JKPLibrary.Options"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "582:30:0"
+              "src": "582:46:0"
             },
             "returnParameters": {
-              "id": 38,
+              "id": 40,
               "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "629:0:0"
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 39,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 41,
+                  "src": "655:13:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 38,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "655:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "654:15:0"
             },
-            "scope": 47,
-            "src": "569:61:0",
+            "scope": 49,
+            "src": "569:101:0",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "c29d72bc",
-            "id": 46,
+            "id": 48,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getLeaderBoard",
-            "nameLocation": "647:14:0",
+            "nameLocation": "687:14:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 40,
+              "id": 42,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "661:2:0"
+              "src": "701:2:0"
             },
             "returnParameters": {
-              "id": 45,
+              "id": 47,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 44,
+                  "id": 46,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 46,
-                  "src": "714:26:0",
+                  "scope": 48,
+                  "src": "754:26:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Winner_$247_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Winner_$262_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct JKPLibrary.Winner[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 42,
+                      "id": 44,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 41,
+                        "id": 43,
                         "name": "JKPLibrary.Winner",
                         "nameLocations": [
-                          "714:10:0",
-                          "725:6:0"
+                          "754:10:0",
+                          "765:6:0"
                         ],
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 247,
-                        "src": "714:17:0"
+                        "referencedDeclaration": 262,
+                        "src": "754:17:0"
                       },
-                      "referencedDeclaration": 247,
-                      "src": "714:17:0",
+                      "referencedDeclaration": 262,
+                      "src": "754:17:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Winner_$247_storage_ptr",
+                        "typeIdentifier": "t_struct$_Winner_$262_storage_ptr",
                         "typeString": "struct JKPLibrary.Winner"
                       }
                     },
-                    "id": 43,
+                    "id": 45,
                     "nodeType": "ArrayTypeName",
-                    "src": "714:19:0",
+                    "src": "754:19:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Winner_$247_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Winner_$262_storage_$dyn_storage_ptr",
                       "typeString": "struct JKPLibrary.Winner[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "713:28:0"
+              "src": "753:28:0"
             },
-            "scope": 47,
-            "src": "638:104:0",
+            "scope": 49,
+            "src": "678:104:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 48,
-        "src": "186:559:0",
+        "scope": 50,
+        "src": "186:599:0",
         "usedErrors": []
       }
     ],
-    "src": "107:640:0"
+    "src": "107:680:0"
   },
   "compiler": {
     "name": "solc",
@@ -679,7 +713,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.14",
-  "updatedAt": "2023-05-28T01:13:18.020Z",
+  "updatedAt": "2023-05-30T01:03:01.404Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -9,6 +9,8 @@ contract JKPAdapter {
     IJoKenPo private joKenPo;
     address public immutable owner;
 
+    event Played(address indexed player, string result);
+
     constructor() {
         owner = payable(msg.sender);
     }
@@ -42,7 +44,8 @@ contract JKPAdapter {
     }
 
     function play(JKPLibrary.Options newChoice) external payable upgraded {
-        joKenPo.play{value: msg.value}(newChoice);
+        string memory result = joKenPo.play{value: msg.value}(newChoice);
+        emit Played(msg.sender, result);
     }
 
     function getLeaderBoard()

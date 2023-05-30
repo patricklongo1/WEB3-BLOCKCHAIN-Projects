@@ -10,7 +10,7 @@ export function AlertDestructive({ message }: AlertDestructiveProps) {
     <Alert variant="destructive">
       <AlertCircle className="h-4 w-4" />
       <AlertTitle>Error</AlertTitle>
-      <AlertDescription>{message}</AlertDescription>
+      <AlertDescription className="overflow-hidden">{message}</AlertDescription>
     </Alert>
   )
 }

@@ -15,15 +15,15 @@
     "absolutePath": "project:/contracts/JKPLibrary.sol",
     "exportedSymbols": {
       "JKPLibrary": [
-        248
+        263
       ]
     },
-    "id": 249,
+    "id": 264,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 237,
+        "id": 252,
         "literals": [
           "solidity",
           "^",
@@ -41,9 +41,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 248,
+        "id": 263,
         "linearizedBaseContracts": [
-          248
+          263
         ],
         "name": "JKPLibrary",
         "nameLocation": "74:10:2",
@@ -51,31 +51,31 @@
         "nodes": [
           {
             "canonicalName": "JKPLibrary.Options",
-            "id": 242,
+            "id": 257,
             "members": [
               {
-                "id": 238,
+                "id": 253,
                 "name": "NONE",
                 "nameLocation": "116:4:2",
                 "nodeType": "EnumValue",
                 "src": "116:4:2"
               },
               {
-                "id": 239,
+                "id": 254,
                 "name": "ROCK",
                 "nameLocation": "131:4:2",
                 "nodeType": "EnumValue",
                 "src": "131:4:2"
               },
               {
-                "id": 240,
+                "id": 255,
                 "name": "PAPER",
                 "nameLocation": "146:5:2",
                 "nodeType": "EnumValue",
                 "src": "146:5:2"
               },
               {
-                "id": 241,
+                "id": 256,
                 "name": "SCISSORS",
                 "nameLocation": "162:8:2",
                 "nodeType": "EnumValue",
@@ -89,16 +89,16 @@
           },
           {
             "canonicalName": "JKPLibrary.Winner",
-            "id": 247,
+            "id": 262,
             "members": [
               {
                 "constant": false,
-                "id": 244,
+                "id": 259,
                 "mutability": "mutable",
                 "name": "wallet",
                 "nameLocation": "231:6:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 247,
+                "scope": 262,
                 "src": "223:14:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -107,7 +107,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 243,
+                  "id": 258,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "223:7:2",
@@ -121,12 +121,12 @@
               },
               {
                 "constant": false,
-                "id": 246,
+                "id": 261,
                 "mutability": "mutable",
                 "name": "wins",
                 "nameLocation": "255:4:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 247,
+                "scope": 262,
                 "src": "248:11:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -135,7 +135,7 @@
                   "typeString": "uint32"
                 },
                 "typeName": {
-                  "id": 245,
+                  "id": 260,
                   "name": "uint32",
                   "nodeType": "ElementaryTypeName",
                   "src": "248:6:2",
@@ -150,12 +150,12 @@
             "name": "Winner",
             "nameLocation": "205:6:2",
             "nodeType": "StructDefinition",
-            "scope": 248,
+            "scope": 263,
             "src": "198:69:2",
             "visibility": "public"
           }
         ],
-        "scope": 249,
+        "scope": 264,
         "src": "66:204:2",
         "usedErrors": []
       }
@@ -170,8 +170,8 @@
     "97": {
       "events": {},
       "links": {},
-      "address": "0xD9C7d35DB301363f34B2184E537f3EED896E2DDA",
-      "transactionHash": "0xa37157d5593fa96e6ec0b0c2af961cb340866ef97b9da1b29e300b349417b0cb"
+      "address": "0xD80542D013d0557155B164c9D60081047f981f73",
+      "transactionHash": "0x5f550a49375d0e8ef163e5e4cf8b10142d16eb91bd343b2b004053d0bc4f7703"
     },
     "5777": {
       "events": {},
@@ -181,7 +181,7 @@
     }
   },
   "schemaVersion": "3.4.14",
-  "updatedAt": "2023-05-28T01:14:31.057Z",
+  "updatedAt": "2023-05-30T01:04:24.630Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
