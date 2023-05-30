@@ -66,7 +66,9 @@ export default function Leaderboard() {
           <LeaderboardEskeleton />
         ) : (
           <Table className="mx-auto w-full rounded-lg bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 font-semibold text-foreground dark:text-secondary md:w-[70%]">
-            <TableCaption>A list of best players of the world. 🚀</TableCaption>
+            <TableCaption className="mb-6">
+              🚀 A list of the best players of the world.
+            </TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[full] text-center">

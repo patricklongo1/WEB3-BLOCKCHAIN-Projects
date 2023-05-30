@@ -82,8 +82,10 @@ export default function Game() {
     const filter = contract.filters[eventName]()
 
     contract.on(filter, async (event) => {
-      console.log('Novo evento recebido:', event)
-      await loadStatus()
+      setIsLoadingStatus(true)
+      setInterval(async () => {
+        await loadStatus()
+      }, 3000)
     })
   }
 
@@ -140,17 +142,19 @@ export default function Game() {
               isLoadingStatus && 'animate-pulse'
             }`}
           >
-            {status}
+            {isLoadingStatus ? 'Loading...' : status}
           </p>
         </div>
 
         <h3
           className={`mt-8 scroll-m-20 text-center font-mono text-2xl font-semibold tracking-tight dark:text-secondary-foreground ${
-            status.includes('won') && !isLoadingStatus && 'animate-pulse'
+            (status.includes('won') || status.includes('Draw')) &&
+            !isLoadingStatus &&
+            'animate-pulse'
           }`}
         >
           {isAuthenticated
-            ? status.includes('won')
+            ? status.includes('won') || status.includes('Draw')
               ? 'Start a new game'
               : 'Play this game'
             : 'Login with metamask to play'}
