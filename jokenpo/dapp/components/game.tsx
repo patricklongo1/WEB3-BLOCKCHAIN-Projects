@@ -58,30 +58,7 @@ export default function Game() {
     return contract
   }
 
-  useEffect(() => {
-    const isAuth = Cookies.get('walletInfos')
-    if (isAuth) {
-      setIsAuthenticated(true)
-    }
-
-    async function loadStatus() {
-      const contract = getContract()
-
-      try {
-        const currentStatus = await contract.getResult()
-        setStatus(currentStatus)
-        setIsLoadingStatus(false)
-      } catch (error: any) {
-        console.log(error)
-        setError(`Error while load status from contract: ${error.message}`)
-        setIsLoadingStatus(false)
-      }
-    }
-    loadStatus()
-  }, [])
-
-  async function reloadStatus() {
-    setIsLoadingStatus(true)
+  async function loadStatus() {
     const contract = getContract()
 
     try {
@@ -94,6 +71,31 @@ export default function Game() {
       setIsLoadingStatus(false)
     }
   }
+
+  async function listenToContractEvents() {
+    const providerUrl = `${process.env.NEXT_PUBLIC_PROVIDER_URL}`
+    const contractAddress = `${process.env.NEXT_PUBLIC_CONTRACT_ADDRESS}`
+
+    const provider = new ethers.providers.JsonRpcProvider(providerUrl)
+    const contract = new ethers.Contract(contractAddress, ABI, provider)
+    const eventName = 'Played'
+    const filter = contract.filters[eventName]()
+
+    contract.on(filter, async (event) => {
+      console.log('Novo evento recebido:', event)
+      await loadStatus()
+    })
+  }
+
+  useEffect(() => {
+    const isAuth = Cookies.get('walletInfos')
+    if (isAuth) {
+      setIsAuthenticated(true)
+    }
+    listenToContractEvents()
+    loadStatus()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   function extractReasonFromError(errorString: string) {
     const reasonRegex = /reason="([^"]+)"/
@@ -112,7 +114,6 @@ export default function Game() {
     try {
       const tx = await contract.play(option, { value })
       await tx.wait()
-      await reloadStatus()
       setThePlay(null)
     } catch (error: any) {
       if (
@@ -124,7 +125,6 @@ export default function Game() {
         setError(`${extractReasonFromError(error.message)}`)
       }
       setThePlay(null)
-      reloadStatus()
     }
   }
 
