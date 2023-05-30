@@ -16,3 +16,8 @@ Monorepo para projetos de estudo, baseados em techs WEB3 e Blockchain. Incluindo
 - Ganache
 - Infura node
 - Mocha
+- OpenZeppelin
+- ERC-20
+- BEP-20
+- Adapters
+- Libraries
