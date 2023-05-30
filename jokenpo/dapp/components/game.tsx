@@ -24,7 +24,7 @@ export default function Game() {
   const [isLoadingStatus, setIsLoadingStatus] = useState(true)
   const [thePlay, setThePlay] = useState<Options | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState('Loading...')
 
   function getContract() {
     if (!window.ethereum) {
@@ -106,6 +106,7 @@ export default function Game() {
 
   async function play(option: Options) {
     setThePlay(option)
+    setStatus('Sending your play')
     const contract = await getContractWithSigner()
     const value = ethers.utils.parseUnits('0.01', 'ether')
     try {
@@ -114,8 +115,16 @@ export default function Game() {
       await reloadStatus()
       setThePlay(null)
     } catch (error: any) {
-      setError(`${extractReasonFromError(error.message)}`)
+      if (
+        error.message &&
+        error.message.includes('user rejected transaction')
+      ) {
+        setError('MetaMask Tx Signature: User denied transaction signature.')
+      } else {
+        setError(`${extractReasonFromError(error.message)}`)
+      }
       setThePlay(null)
+      reloadStatus()
     }
   }
 
@@ -131,7 +140,7 @@ export default function Game() {
               isLoadingStatus && 'animate-pulse'
             }`}
           >
-            {status || 'Loading...'}
+            {status}
           </p>
         </div>
 
