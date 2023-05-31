@@ -52,7 +52,7 @@ export function RulesDialog() {
             alt="logo"
             width={250}
             height={250}
-            className="absolute right-0 mr-[-90px] mt-[-70px] animate-bounce rounded-full shadow-2xl shadow-gray-900"
+            className="absolute right-0 mr-[-90px] mt-[-70px] h-28 w-28 animate-bounce rounded-full shadow-2xl shadow-gray-900 md:h-[250px] md:w-[250px]"
           />
           <ul className="text-md my-6 ml-6 list-disc text-primary-foreground md:text-lg [&>li]:mt-2">
             <li>In this version, only one game is played at a time.</li>
