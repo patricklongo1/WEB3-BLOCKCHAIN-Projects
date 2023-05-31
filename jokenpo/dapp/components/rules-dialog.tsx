@@ -37,11 +37,11 @@ export function RulesDialog() {
     <Dialog open={open} onOpenChange={handleCloseDialog}>
       <DialogContent className="bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 py-16 ring-2 ring-purple-400 md:max-w-[1050px]">
         <DialogHeader>
-          <DialogTitle className="text-primary-foreground">
+          <DialogTitle className="text-foreground dark:text-primary-foreground">
             First time here? WELCOME. Here is some JoKenPo dApp information and
             rules
           </DialogTitle>
-          <DialogDescription className="text-primary-foreground">
+          <DialogDescription className="text-foreground dark:text-primary-foreground">
             This is a project developed in a didactic context, and does not
             support bets of any kind. The project is under MIT license.
           </DialogDescription>
@@ -54,7 +54,7 @@ export function RulesDialog() {
             height={250}
             className="absolute right-0 mr-[-90px] mt-[-70px] h-28 w-28 animate-bounce rounded-full shadow-2xl shadow-gray-900 md:h-[250px] md:w-[250px]"
           />
-          <ul className="text-md my-6 ml-6 list-disc text-primary-foreground md:text-lg [&>li]:mt-2">
+          <ul className="text-md my-6 ml-6 list-disc text-foreground dark:text-primary-foreground md:text-lg [&>li]:mt-2">
             <li>In this version, only one game is played at a time.</li>
             <li>The bar inside the card shows the state of the game.</li>
             <li>
