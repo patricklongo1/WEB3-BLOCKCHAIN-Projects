@@ -1,4 +1,5 @@
 import Game from '@/components/game'
+import { RulesDialog } from '@/components/rules-dialog'
 
 export default function IndexPage() {
   return (
@@ -10,7 +11,7 @@ export default function IndexPage() {
       <p className="mb-6 text-sm leading-6 sm:text-lg sm:leading-7">
         Here you can check the current game status, play and get fun!
       </p>
-
+      <RulesDialog />
       <Game />
     </section>
   )

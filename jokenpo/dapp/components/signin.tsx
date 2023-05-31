@@ -46,7 +46,7 @@ export function SignIn() {
     }
     const isAdmin = accounts[0] === owner
 
-    const cookieExpiresInSeconds = 60 * 60 * 24 * 1
+    const cookieExpiresInSeconds = 60 * 60 * 24 * 7
 
     Cookies.set(
       'walletInfos',
