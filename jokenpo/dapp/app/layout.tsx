@@ -46,7 +46,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <div className="relative self-center">
                 <div className="mt-[-150px] h-[250px] w-[300px] bg-gradient-conic from-indigo-500 via-purple-500 to-pink-500 opacity-20 blur-3xl dark:from-indigo-300 dark:via-purple-300 dark:to-pink-300 dark:opacity-30" />
               </div>
-              <div className="mt-[-100px] flex-1 px-12 text-foreground sm:px-4 sm:text-base">
+              <div className="mt-[-100px] flex-1 text-foreground sm:px-4 sm:text-base">
                 {children}
               </div>
             </div>
