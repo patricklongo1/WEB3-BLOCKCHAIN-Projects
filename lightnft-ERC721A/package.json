@@ -1,0 +1,17 @@
+{
+  "name": "Lighthouse-ERC721A",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx hardhat coverage"
+  },
+  "keywords": [],
+  "author": "Patrick Longo",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "erc721a": "^4.2.3",
+    "hardhat": "^2.14.1"
+  }
+}
