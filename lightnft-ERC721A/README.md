@@ -11,3 +11,9 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.ts
 ```
+Burn é feito apenas pelo owner ou approved do token
+libera o burn para o user (metamask client side nescessário) user paga transferencia
+front informa back sobre o sucesso do burn, back minta o novo token e transfere
+OU
+aplicação solicita que o user dê approval (metamask client side nescessário) user paga transferencia
+back faz o burn como approval, minta o novo token e transfere
