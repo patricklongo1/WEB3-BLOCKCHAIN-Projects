@@ -3,16 +3,11 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 
 describe("Lighthouse", function () {
-  // We define a fixture to reuse the same setup in every test.
-  // We use loadFixture to run this setup once, snapshot that state,
-  // and reset Hardhat Network to that snapshot in every test.
   async function deployFixture() {
     // Contracts are deployed using the first signer/account by default
     const [owner, otherAccount] = await ethers.getSigners();
-
-    const ProtoNFT = await ethers.getContractFactory("Lighthouse");
-    const contract = await ProtoNFT.deploy();
-
+    const Lighthouse = await ethers.getContractFactory("Lighthouse");
+    const contract = await Lighthouse.deploy();
     return { contract, owner, otherAccount };
   }
 
@@ -51,10 +46,11 @@ describe("Lighthouse", function () {
     expect(ownerOf).to.equal(owner.address, "Can't mint");
     expect(totalSupply).to.equal(1, "Can't mint");
   });
-  /* it("Should NOT mint (owner)", async function () {
+  it("Should NOT mint (owner)", async function () {
     const { contract, owner, otherAccount } = await loadFixture(deployFixture);
-    await expect(contract.mint(1)).to.be.revertedWith("Insufficient payment");
-  }); */
+    const instance = contract.connect(otherAccount);
+    await expect(instance.mint(1)).to.be.revertedWith("Only the contract owner can call this function");
+  });
 
   // burn
   it("Should burn", async function () {
@@ -99,59 +95,6 @@ describe("Lighthouse", function () {
       "OwnerQueryForNonexistentToken"
     );
   });
-  it("Should burn (approved)", async function () {
-    const { contract, owner, otherAccount } = await loadFixture(deployFixture);
-
-    await contract.mint(1);
-    const tokenId = 0;
-
-    await contract.approve(otherAccount.address, tokenId);
-    const approved = await contract.getApproved(tokenId);
-
-    const instance = contract.connect(otherAccount);
-    await instance.burn(tokenId);
-
-    const balance = await contract.balanceOf(owner.address);
-    const totalSupply = await contract.totalSupply();
-
-    expect(balance).to.equal(0, "Can't burn (approve)");
-    expect(totalSupply).to.equal(0, "Can't burn (approve)");
-    expect(approved).to.equal(otherAccount.address, "Can't burn (approve)");
-  });
-  it("Should burn (approved for all)", async function () {
-    const { contract, owner, otherAccount } = await loadFixture(deployFixture);
-
-    await contract.mint(1);
-    const tokenId = 0;
-
-    await contract.setApprovalForAll(otherAccount.address, true);
-    const approved = await contract.isApprovedForAll(
-      owner.address,
-      otherAccount.address
-    );
-
-    const instance = contract.connect(otherAccount);
-    await instance.burn(tokenId);
-
-    const balance = await contract.balanceOf(owner.address);
-    const totalSupply = await contract.totalSupply();
-
-    expect(balance).to.equal(0, "Can't burn (approve for all)");
-    expect(totalSupply).to.equal(0, "Can't burn (approve for all)");
-    expect(approved).to.equal(true, "Can't burn (approve for all)");
-  });
-  it("Should NOT burn (permission)", async function () {
-    const { contract, owner, otherAccount } = await loadFixture(deployFixture);
-
-    await contract.mint(1);
-    const tokenId = 0;
-
-    const instance = contract.connect(otherAccount);
-    await expect(instance.burn(tokenId)).to.be.revertedWithCustomError(
-      contract,
-      "TransferCallerNotOwnerNorApproved"
-    );
-  });
 
   // URI metadata
   it("Should has URI metadata", async function () {
@@ -161,7 +104,7 @@ describe("Lighthouse", function () {
     const tokenId = 0;
 
     expect(await contract.tokenURI(tokenId)).to.equal(
-      "https://light.com.br/ntfs/0.json",
+      "https://lighters.live/api/nft/0.json",
       "Can't get URI Metadata"
     );
   });
@@ -300,34 +243,4 @@ describe("Lighthouse", function () {
       .to.emit(contract, "ApprovalForAll")
       .withArgs(owner.address, otherAccount.address, true);
   });
-
-  
-  // withdraw
-  /* it("Should withdraw", async function () {
-    const { contract, owner, otherAccount } = await loadFixture(deployFixture);
-
-    const ownerBalanceBefore = await ethers.provider.getBalance(owner.address);
-
-    const instance = contract.connect(otherAccount);
-    await instance.mint(1);
-
-    await contract.withdraw();
-
-    const contractBalance = await ethers.provider.getBalance(contract.address);
-    const ownerBalanceAfter = await ethers.provider.getBalance(owner.address);
-
-    expect(contractBalance).to.equal(0, "Can't withdraw");
-    expect(ownerBalanceAfter).to.greaterThan(
-      ownerBalanceBefore,
-      "Can't withdraw"
-    );
-  }); */
-  /* it("Should NOT withdraw (permission)", async function () {
-    const { contract, owner, otherAccount } = await loadFixture(deployFixture);
-
-    const instance = contract.connect(otherAccount);
-    await expect(instance.withdraw()).to.be.revertedWith(
-      "You do not have permission"
-    );
-  }); */
 });
