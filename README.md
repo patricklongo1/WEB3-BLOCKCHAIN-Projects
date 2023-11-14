@@ -12,6 +12,7 @@ Monorepo para projetos de estudo, baseados em techs WEB3 e Blockchain. Incluindo
 - Ethereum
 - EtherScan
 - Metamask
+- Hardhat
 - Truffle Suite
 - Ganache
 - Infura node
